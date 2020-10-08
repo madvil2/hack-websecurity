@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-shrink: 0;
+  justify-content: space-between;
+  box-sizing: border-box;
+  right: 0;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  background-color: #fff;
+  //height: 3.385vw; // 65px;
+  min-height: 50px;
+  max-height: 60px;
+  padding: .735vw 1.094vw .735vw 0;
+  align-items: center;
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: 0 2px 9px 0 rgba(25, 35, 45, 0.25);
+  background-color: rgba(255, 255, 255, 1);
+  position: relative;
+  z-index: 5
+}

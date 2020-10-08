@@ -1,0 +1,26 @@
+.container {
+  //flex: 1;
+  height: 100%;
+  flex-grow: 1;
+  width: 100%;
+  overflow-y: scroll;
+  position: relative;
+  background-color: #fff;
+}
+.loader {
+  color: #10bf6a;
+  width: 64px;
+  height: 64px;
+  margin:auto;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  position: fixed;
+}
+
+.loaderMore {
+  background: green;
+  height: 20px;
+  width: 100%;
+}
