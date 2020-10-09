@@ -22,4 +22,8 @@ export default {
     path: paths.transaction,
     component: Transaction,
   },
+  // checkFace: {
+  //   path: paths.checkFace,
+  //   component: () => <div style={{ display: 'none' }}><P5Wrapper sketch={checkFace} /></div>
+  // }
 };
