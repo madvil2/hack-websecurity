@@ -1,10 +1,15 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { SideMenu } from '../../components/sideMenu';
 import routes from './routes';
 import history from '../../history';
 import styled from 'styled-components';
-import {HomeOutline, ListOutline, SettingsOutline} from '../../components/icon';
+import {
+  HomeOutline,
+  ListOutline,
+  SettingsOutline,
+} from '../../components/icon';
+import Widget from '../../components/widget';
 import colors from '../../colors';
 
 const StyledMainContainer = styled.div`
@@ -14,15 +19,15 @@ const StyledMainContainer = styled.div`
   height: 100%;
 `;
 const StyledContentContainer = styled.div`
-display: flex;
-flex: 1;
-flex-basis: 80%;
-height: 100%;
-padding-top: 1vw;
-padding-right: 1vw;
-padding-bottom: 1vw;
-border-radius: 1rem;
-background-color: ${colors.BACKGROUND};
+  display: flex;
+  flex: 1;
+  flex-basis: 80%;
+  height: 100%;
+  padding-top: 1vw;
+  padding-right: 1vw;
+  padding-bottom: 1vw;
+  border-radius: 1rem;
+  background-color: ${colors.BACKGROUND};
 `;
 
 const links = () => {
@@ -32,43 +37,44 @@ const links = () => {
       label: role === 'client' ? 'Мои заявки' : 'Мои задачи',
       path: '/statuses',
       key: '/statuses',
-      icon: <HomeOutline/>,
-      iconActive: <HomeOutline color={colors.INFO}/>
+      icon: <HomeOutline />,
+      iconActive: <HomeOutline color={colors.INFO} />,
     },
     {
       label: 'Каталог услуг',
       path: '/services',
       key: '/services',
-      icon: <ListOutline/>,
-      iconActive: <ListOutline color={colors.INFO}/>
+      icon: <ListOutline />,
+      iconActive: <ListOutline color={colors.INFO} />,
     },
     {
       label: 'Настройки',
       path: '/settings',
       key: '/settings',
-      icon: <SettingsOutline/>,
-      iconActive: <SettingsOutline color={colors.INFO}/>
+      icon: <SettingsOutline />,
+      iconActive: <SettingsOutline color={colors.INFO} />,
     },
   ];
-}
+};
 
 const Skeleton = () => (
   <BrowserRouter history={history}>
-      <StyledMainContainer>
-        <SideMenu links={links()}  />
-        <StyledContentContainer>
-          <Switch>
-            {Object.values(routes).map((route) => (
-              <Route
-                key={route.path}
-                exact
-                path={route.path}
-                component={route.component}
-              />
-            ))}
-          </Switch>
-        </StyledContentContainer>
-      </StyledMainContainer>
+    <StyledMainContainer>
+      <SideMenu links={links()} />
+      <StyledContentContainer>
+        <Switch>
+          {Object.values(routes).map((route) => (
+            <Route
+              key={route.path}
+              exact
+              path={route.path}
+              component={route.component}
+            />
+          ))}
+        </Switch>
+        <Widget></Widget>
+      </StyledContentContainer>
+    </StyledMainContainer>
   </BrowserRouter>
 );
 
