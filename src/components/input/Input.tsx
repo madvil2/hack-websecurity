@@ -26,6 +26,7 @@ export interface InputProps {
   isInvalid?: boolean;
   isFocused?: boolean;
   isRequired?: boolean;
+  pattern?: string;
 }
 
 const DefaultInput = ({
@@ -50,19 +51,8 @@ const DefaultInput = ({
   isInvalid = false,
   isFocused = false,
   isRequired = false,
+  pattern = '',
 }: InputProps) => {
-  const [inputValue, setInputValue] = useState(value);
-  useEffect(() => {
-    setInputValue(value);
-  }, [value]);
-  const handleChange = useCallback(
-    (e) => {
-      onChange(e);
-      setInputValue(e.target.value);
-    },
-    [value],
-  );
-
   return (
     <InputContainer>
       {label && <InputLabel>{label}</InputLabel>}
@@ -74,16 +64,17 @@ const DefaultInput = ({
         className={className}
         type={type}
         placeholder={placeholder}
-        value={inputValue}
+        value={value}
         onFocus={onFocus}
         onBlur={onBlur}
-        onChange={handleChange}
+        onChange={(e) => onChange(e)}
         disabled={isDisabled}
         aria-label={ariaLabel}
         aria-describedby={ariaDescribedby}
         readOnly={isReadOnly}
         aria-invalid={isInvalid}
         required={isRequired}
+        pattern={pattern}
       />
     </InputContainer>
   );
@@ -163,7 +154,7 @@ export const Input = styled(DefaultInput)`
   border-radius: 6px;
   border: 2px solid ${colors.BLACK100};
   &:focus {
-    border: 2px solid ${colors.SUCCESS};
+    border: 2px solid #00a0e3;
   }
   ${({ variant }) =>
     variant === controlVariant.flushed
@@ -174,7 +165,7 @@ export const Input = styled(DefaultInput)`
        padding-left: 0;
        &:focus {
         border-width: 0 0 2px 0;
-        border-color: ${colors.SUCCESS};
+        border-color: #00a0e3;
        }
        &:invalid {
         border-width: 0 0 2px 0;
@@ -188,13 +179,14 @@ export const Input = styled(DefaultInput)`
    `}
   &:disabled {
     border-radius: 6px;
-    background-color: ${({ isReadOnly }) => !isReadOnly && `${colors.BACKGROUND}`};
+    background-color: ${({ isReadOnly }) =>
+      !isReadOnly && `${colors.BACKGROUND}`};
     color: ${colors.BLACK};
   }
   ${({ isFocused, isDisabled }) =>
     !isDisabled &&
     isFocused &&
     `
-      border-color: ${colors.SUCCESS}!important;
+      border-color: #00a0e3 !important;
     `}
 `;

@@ -14,32 +14,81 @@ import Content from '../../../../components/content';
 import styles from './Transaction.module.scss';
 
 const Transaction = () => {
+  const [inputsValue, setInputsValue] = React.useState({
+    holder: {
+      cardNumber: '',
+      cardMonth: '',
+      cardYear: '',
+      cardCVV: '',
+    },
+    adressee: {
+      cardNumber: '',
+    },
+  });
+
+  const changeValue = (e, type, inputName) => {
+    if (/[0-9]/i.test(e.target.value) || e.target.value === '') {
+      let newValue = {
+        ...inputsValue,
+        [type]: {
+          ...inputsValue[type],
+          [inputName]: e.target.value,
+        },
+      };
+      setInputsValue(newValue);
+    }
+  };
+
   return (
     <Content>
       <HeaderDefault header="Переводы и платежи" />
       <Body>
-        {/* <SegmentControl>
+        <SegmentControl className={styles.TabBlock}>
           <TabList>
-            <Tab id="item1">Item 1</Tab>
-            <Tab id="item2">Item 2</Tab>
-            <Tab id="item3">Item 3</Tab>
+            <Tab id="item1">Перевести</Tab>
+            <Tab id="item2">Оплатить</Tab>
           </TabList>
-          ,
           <TabPanelsList>
-            <TabPanel id="item1">Text 1</TabPanel>
-            <TabPanel id="item2">Text 2</TabPanel>
-            <TabPanel id="item3">Text 3</TabPanel>
+            <TabPanel id="item1">
+              <div className={styles.paymentsBlock}>
+                <h2 className={styles.title}>Данные карты отправителя</h2>
+                <div className={styles.cardBlock}>
+                  <Card
+                    value={inputsValue.holder}
+                    changeValue={changeValue}
+                    type="holder"
+                  />
+                </div>
+                <h2 className={styles.title}>Данные карты получателя</h2>
+                <div className={styles.cardBlock}>
+                  <Card
+                    value={inputsValue.adressee}
+                    changeValue={changeValue}
+                    type="adressee"
+                  />
+                </div>
+                <Button size="md" color="#00a0e3">
+                  Перевести
+                </Button>
+              </div>
+            </TabPanel>
+            <TabPanel id="item2">
+              <div className={styles.paymentsBlock}>
+                <h2 className={styles.title}>Данные карты получателя</h2>
+                <div className={styles.cardBlock}>
+                  <Card
+                    value={inputsValue.adressee}
+                    changeValue={changeValue}
+                    type="adressee"
+                  />
+                </div>
+                <Button size="md" color="#00a0e3">
+                  Перевести
+                </Button>
+              </div>
+            </TabPanel>
           </TabPanelsList>
-        </SegmentControl> */}
-        <div className={styles.paymentsBlock}>
-          <h2 className={styles.title}>Данные карты</h2>
-          <div className={styles.cardBlock}>
-            <Card type="holder" />
-          </div>
-          <Button size="md" color="#00a0e3">
-            Перевести
-          </Button>
-        </div>
+        </SegmentControl>
       </Body>
     </Content>
   );
