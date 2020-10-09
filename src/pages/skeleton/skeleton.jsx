@@ -46,13 +46,13 @@ const links = () => {
 };
 
 const Skeleton = () => {
-  const [countPerson, setCountPerson] = useState(0);
+  const [countPerson, setCountPerson] = useState(1);
   return (
     <BrowserRouter history={history}>
-      <div className={cx({[styles.blur_container]: countPerson !== 1})}>
+      <div className={cx({[styles.blur_container]: countPerson !== 1})} />
       <StyledMainContainer>
         <div style={{ display: 'none' }}>
-          <P5Wrapper sketch={(p) => checkFace(p, setCountPerson)} />
+          {/*<P5Wrapper sketch={(p) => checkFace(p, setCountPerson)} />*/}
         </div>
         <SideMenu links={links()}  />
         <StyledContentContainer>
@@ -68,7 +68,6 @@ const Skeleton = () => {
           </Switch>
         </StyledContentContainer>
       </StyledMainContainer>
-      </div>
     </BrowserRouter>
   );
 }
