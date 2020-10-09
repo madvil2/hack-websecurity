@@ -14,7 +14,7 @@ export default {
     INFO400: '#7AC0FF',
     INFO700: '#5AB0FF',
 
-    SUCCESS: '#10BF6A',
+    SUCCESS: '#0a2896',
     SUCCESS100: '#e7f9f0',
     SUCCESS200: '#cff2e1',
     SUCCESS400: '#9fe5c3',

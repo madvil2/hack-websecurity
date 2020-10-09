@@ -160,7 +160,7 @@ export const Input = styled(DefaultInput)`
       }
     `}
 
-  border-radius: 6px;
+  // border-radius: 6px;
   border: 2px solid ${colors.BLACK100};
   &:focus {
     border: 2px solid ${colors.SUCCESS};
