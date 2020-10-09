@@ -1,12 +1,18 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 import paths from './paths';
 import SettingsPage from '../protected/client/settings/settings';
+import Home from '../home';
 import Transaction from '../protected/client/transaction/transaction';
 
 export default {
   index: {
     path: paths.index,
-    component: () => <h1>Home</h1>,
+    component: () => <Redirect to={paths.products} />,
+  },
+  home: {
+    path: paths.products,
+    component: Home,
   },
   settings: {
     path: paths.settings,

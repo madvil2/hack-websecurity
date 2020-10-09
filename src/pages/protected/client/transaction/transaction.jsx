@@ -38,7 +38,6 @@ const Transaction = () => {
       setInputsValue(newValue);
     }
   };
-
   return (
     <Content>
       <HeaderDefault header="Переводы и платежи" />

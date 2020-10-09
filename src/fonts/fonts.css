@@ -30,3 +30,8 @@
     font-weight: bold;
     font-style: normal;
 }
+@font-face {
+    font-family: 'VTB';
+    src: url('./VTBGroup-Book.woff');
+    font-style: normal;
+}
