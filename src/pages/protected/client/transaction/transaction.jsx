@@ -38,6 +38,11 @@ const Transaction = () => {
       setInputsValue(newValue);
     }
   };
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+  };
+
   return (
     <Content>
       <HeaderDefault header="Переводы и платежи" />
@@ -49,7 +54,10 @@ const Transaction = () => {
           </TabList>
           <TabPanelsList>
             <TabPanel id="item1">
-              <div className={styles.paymentsBlock}>
+              <form
+                onSubmit={(e) => onSubmit(e)}
+                className={styles.paymentsBlock}
+              >
                 <h2 className={styles.title}>Данные карты отправителя</h2>
                 <div className={styles.cardBlock}>
                   <Card
@@ -66,13 +74,16 @@ const Transaction = () => {
                     type="adressee"
                   />
                 </div>
-                <Button size="md" color="#00a0e3">
+                <Button onSubmit={(e) => onSubmit(e)} size="md" color="#00a0e3">
                   Перевести
                 </Button>
-              </div>
+              </form>
             </TabPanel>
             <TabPanel id="item2">
-              <div className={styles.paymentsBlock}>
+              <form
+                onSubmit={(e) => onSubmit(e)}
+                className={styles.paymentsBlock}
+              >
                 <h2 className={styles.title}>Данные карты получателя</h2>
                 <div className={styles.cardBlock}>
                   <Card
@@ -81,10 +92,10 @@ const Transaction = () => {
                     type="adressee"
                   />
                 </div>
-                <Button size="md" color="#00a0e3">
+                <Button onSubmit={(e) => onSubmit(e)} size="md" color="#00a0e3">
                   Перевести
                 </Button>
-              </div>
+              </form>
             </TabPanel>
           </TabPanelsList>
         </SegmentControl>
