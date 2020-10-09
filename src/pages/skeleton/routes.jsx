@@ -3,6 +3,7 @@ import { Redirect } from 'react-router-dom';
 import paths from './paths';
 import SettingsPage from '../protected/client/settings/settings';
 import Home from '../home';
+import Transaction from '../protected/client/transaction/transaction';
 
 export default {
   index: {
@@ -16,5 +17,9 @@ export default {
   settings: {
     path: paths.settings,
     component: SettingsPage,
-  }
+  },
+  transaction: {
+    path: paths.transaction,
+    component: Transaction,
+  },
 };
