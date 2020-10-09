@@ -30,8 +30,8 @@ const links = () => {
     },
     {
       label: 'Переводы',
-      path: '/pays',
-      key: '/pays',
+      path: '/transaction',
+      key: '/transaction',
     },
     {
       label: 'Настройки',

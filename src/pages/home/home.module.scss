@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 100%;
 }
 .info_container {
   display: flex;
@@ -11,6 +12,7 @@
   background-size: 100%;
   background-repeat: no-repeat;
   padding: 0 3vw;
+  height: 100%;
 }
 .money_container {
   display: flex;
