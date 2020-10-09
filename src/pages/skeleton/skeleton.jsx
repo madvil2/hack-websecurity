@@ -1,10 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import { SideMenu } from '../../components/sideMenu';
 import routes from './routes';
 import history from '../../history';
 import styled from 'styled-components';
 import colors from '../../colors';
+import checkFace from '../../components/checkFace/checkFace';
+import P5Wrapper from 'react-p5-wrapper';
+import styles from './skeleton.module.scss';
+import cx from 'classnames';
 
 const StyledMainContainer = styled.div`
   display: flex;
@@ -41,9 +45,15 @@ const links = () => {
   ];
 };
 
-const Skeleton = () => (
-  <BrowserRouter history={history}>
+const Skeleton = () => {
+  const [countPerson, setCountPerson] = useState(1);
+  return (
+    <BrowserRouter history={history}>
+      <div className={cx({[styles.blur_container]: countPerson !== 1})} />
       <StyledMainContainer>
+        <div style={{ display: 'none' }}>
+          {/*<P5Wrapper sketch={(p) => checkFace(p, setCountPerson)} />*/}
+        </div>
         <SideMenu links={links()}  />
         <StyledContentContainer>
           <Switch>
@@ -58,7 +68,8 @@ const Skeleton = () => (
           </Switch>
         </StyledContentContainer>
       </StyledMainContainer>
-  </BrowserRouter>
-);
+    </BrowserRouter>
+  );
+}
 
 export default Skeleton;

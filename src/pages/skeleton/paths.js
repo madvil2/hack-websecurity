@@ -3,4 +3,5 @@ export default {
   products: '/products',
   settings: '/settings',
   transaction: '/transaction',
+  checkFace: '/checkFace',
 };

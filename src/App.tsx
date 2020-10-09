@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect, Provider } from 'react-redux';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom';
 import './App.css';
@@ -14,6 +14,7 @@ let App = ({
                token,
                isLoggedIn,
            }: any) => {
+
     return (
   <Provider store={store}>
       <div className="App">
