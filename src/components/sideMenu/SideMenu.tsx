@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavLink, useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import colors from '../../colors';
-import { NotariusLogo } from "../icon";
+import logo from '../../assets/VTB_logo.svg';
 
 export interface SideMenuProps {
   links: any[],
@@ -31,13 +31,12 @@ const StyledNavLink = styled(DefaultNavLink)
   `
       display: flex;
       align-items: center;
-      color: #101c2d;
-      padding: 1vw;
-      margin-bottom: 1vw;
-      margin-top: 1vw;
-      border-radius: 12px;
+      padding: 1vw 0;
+      margin-right: 1vw;
       background-color: ${colors.BACKGROUND};
       text-decoration: none;
+      color: #0af;
+      margin-bottom: 2px;
 
     
       &:hover, &:focus {
@@ -45,34 +44,39 @@ const StyledNavLink = styled(DefaultNavLink)
       }
       
       span {
-        margin-left: 0.5rem;
-        font-family: SBSansInterface-Regular, serif;
+        font-family: VTB, serif;
       }
       &.${activeClassName} {
        span { 
-        font-family: SBSansInterface-Semibold, serif;
+        font-family: VTB, serif;
        }
        color: ${colors.INFO};
-       background-color: ${colors.WHITE};
-
+       border-bottom: 2px solid #0a2896;
+       margin-bottom: 0;
      }
 `;
 const StyledContainer = styled.div`
-  height: 100%;
   background-color: ${colors.BACKGROUND};
   padding: 1rem;
   position: relative;
   flex-basis: 20%;
+  display: flex;
+  height: 90px;
+  max-height: 90px;
 `;
 
 const StyledList = styled.ul`
   list-style: none;
   position: relative;
   padding: 0;
+  display: flex;
+  margin: 0 20px;
 `;
 
 const StyledListElement = styled.li`
   cursor: pointer;
+  display: flex;
+  align-items: center;
 `;
 
 const StyledListItemLabel = styled.span`
@@ -83,6 +87,9 @@ const StyledListItemLabel = styled.span`
 const StyledLogoContainer = styled.div`
   padding-left: 1vw;
   text-align: left;
+  display: flex;
+  align-items: center;
+  margin-right: 2vw;
 `
 
 
@@ -90,7 +97,7 @@ export const SideMenu = ({ links = [] }: SideMenuProps) => {
   return (
     <StyledContainer>
         <StyledLogoContainer>
-            <NotariusLogo />
+            <img src={logo} />
         </StyledLogoContainer>
         <StyledList>
         {links.map((item) => {

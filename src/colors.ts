@@ -8,7 +8,7 @@ export default {
     BLACK400: '#999999',
     BLACK700: '#4d4d4d',
 
-    INFO: '#005E7F',
+    INFO: '#0a2896',
     INFO100: '#BBE0FE',
     INFO200: '#9BD0FE',
     INFO400: '#7AC0FF',
