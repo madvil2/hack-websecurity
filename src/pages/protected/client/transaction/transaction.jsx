@@ -46,7 +46,7 @@ const Transaction = () => {
   return (
     <Content>
       <HeaderDefault header="Переводы и платежи" />
-      <Body>
+      <Body className={styles.home}>
         <SegmentControl className={styles.TabBlock}>
           <TabList>
             <Tab id="item1">Перевести</Tab>

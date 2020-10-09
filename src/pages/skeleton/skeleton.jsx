@@ -9,6 +9,7 @@ import checkFace from '../../components/checkFace/checkFace';
 import P5Wrapper from 'react-p5-wrapper';
 import styles from './skeleton.module.scss';
 import cx from 'classnames';
+import Footer from '../../components/footer'
 
 const StyledMainContainer = styled.div`
   display: flex;
@@ -67,6 +68,7 @@ const Skeleton = () => {
             ))}
           </Switch>
         </StyledContentContainer>
+        <Footer />
       </StyledMainContainer>
     </BrowserRouter>
   );
