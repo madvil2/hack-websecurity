@@ -6,4 +6,5 @@ export default {
   serviceForm: '/services/:id',
   chat: '/chat/:id',
   settings: '/settings',
+  transaction: '/transaction',
 };

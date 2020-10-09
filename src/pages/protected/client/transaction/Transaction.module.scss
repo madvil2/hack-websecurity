@@ -1,0 +1,16 @@
+.title {
+  margin: 20px 0 0;
+}
+
+.paymentsBlock {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+.cardBlock {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
