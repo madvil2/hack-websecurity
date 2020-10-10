@@ -151,7 +151,7 @@ const WidgetHeader = styled.div`
     type === 'danger'
       ? colors.ERROR700
       : type === 'warning'
-      ? colors.WARNING
+      ? colors.WARNING700
       : colors.SUCCESS700};
   padding: 24px 24px 0 24px;
   h2 {

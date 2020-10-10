@@ -46,7 +46,7 @@ export const WidgetStatus = ({ type }) => {
               <g>
                 <g>
                   <g transform="translate(-2555 -1239) translate(2467 1055) translate(24 106) translate(64 78)">
-                    <circle cx="21" cy="21" r="21" fill={colors.WARNING} />
+                    <circle cx="21" cy="21" r="21" fill={colors.WARNING700} />
                     <g stroke="#FFF" strokeWidth="3">
                       <path
                         d="M1.4 0L1.4 11.2M1.4 19.4L1.428 19.4"
