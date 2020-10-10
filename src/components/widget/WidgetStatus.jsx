@@ -25,7 +25,7 @@ export const WidgetStatus = ({ type }) => {
                         ? colors.ERROR
                         : type === 'warning'
                         ? colors.WARNING
-                        : colors.SUCCESS
+                        : colors.SUCCESS700
                     }
                   />
                   <path

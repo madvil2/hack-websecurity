@@ -97,7 +97,7 @@ const Widget = ({ type = 'success' }) => {
                       ? colors.ERROR
                       : type === 'warning'
                       ? colors.WARNING
-                      : colors.SUCCESS
+                      : colors.SUCCESS700
                   }
                 />
                 <g
@@ -152,7 +152,7 @@ const WidgetHeader = styled.div`
       ? colors.ERROR
       : type === 'warning'
       ? colors.WARNING
-      : colors.SUCCESS};
+      : colors.SUCCESS700};
   padding: 24px 24px 0 24px;
   h2 {
     margin: 0;
