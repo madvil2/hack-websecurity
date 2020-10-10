@@ -94,7 +94,7 @@ const Widget = ({ type = 'success' }) => {
                   r="52"
                   fill={
                     type === 'danger'
-                      ? colors.ERROR
+                      ? colors.ERROR700
                       : type === 'warning'
                       ? colors.WARNING
                       : colors.SUCCESS700
@@ -149,9 +149,9 @@ const WidgetHeader = styled.div`
   text-align: left;
   background-color: ${({ type }) =>
     type === 'danger'
-      ? colors.ERROR
+      ? colors.ERROR700
       : type === 'warning'
-      ? colors.WARNING
+      ? colors.WARNING700
       : colors.SUCCESS700};
   padding: 24px 24px 0 24px;
   h2 {
@@ -198,11 +198,11 @@ const StatusDescription = styled.div`
 const ControlContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
   height: 200px;
   overflow-y: auto;
   margin-top: 24px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   padding-right: 7px;
 `;
 

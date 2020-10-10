@@ -18,17 +18,17 @@ export default {
   SUCCESS100: '#e7f9f0',
   SUCCESS200: '#cff2e1',
   SUCCESS400: '#9fe5c3',
-  SUCCESS700: '#10bf6a',
+  SUCCESS700: '#0dbf5e',
 
   WARNING: '#FF9A32',
   WARNING100: '#fff5eb',
   WARNING200: '#ffebd6',
   WARNING400: '#ffd7ad',
-  WARNING700: '#ffb870',
+  WARNING700: '#FF9A32',
 
   ERROR: '#ff3810',
   ERROR100: '#FDEEF6',
   ERROR200: '#FEB3D2',
   ERROR400: '#FE77AD',
-  ERROR700: '#FF3399',
+  ERROR700: '#ed1b25',
 };
