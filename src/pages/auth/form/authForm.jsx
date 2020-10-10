@@ -19,13 +19,13 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
     fields: {
       login: {
         label: "Номер телефона",
-        name: "login",
+        name: "loginTrue",
         defaultValue: "",
         rule: Yup.string().required("Введите номер телефона"),
       },
       password: {
         label: "Код из СМС",
-        name: "password",
+        name: "passwordTrue",
         defaultValue: "",
         // rule: Yup.string().required('Введите код из СМС'),
         rule: Yup.string()
@@ -45,12 +45,14 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
           validateOnChange
           validateOnBlur
           initialValues={{
+            loginTrue: formSchema.fields.loginTrue.defaultValue,
             login: formSchema.fields.login.defaultValue,
+            passwordTrue: formSchema.fields.passwordTrue.defaultValue,
             password: formSchema.fields.password.defaultValue,
           }}
           validationSchema={Yup.object({
-            login: formSchema.fields.login.rule,
-            password: formSchema.fields.password.rule,
+            loginTrue: formSchema.fields.login.rule,
+            passwordTrue: formSchema.fields.password.rule,
           })}
 
           // onSubmit={(values, { setSubmitting, setFieldError }) => {
@@ -77,6 +79,12 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
                     placeholder={formSchema.fields.login.label}
                     // type="number"
                     size="large"
+                    {...getFieldProps("loginTrue")}
+                  />
+                  <Input
+                    placeholder={formSchema.fields.login.label}
+                    size="large"
+                    className={styles.Honeypot}
                     {...getFieldProps("login")}
                   />
                   {touched.login && errors.login ? (
@@ -92,6 +100,13 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
                       placeholder={formSchema.fields.password.label}
                       size="large"
                       type="password"
+                      {...getFieldProps("passwordTrue")}
+                    />
+                    <Input
+                      placeholder={formSchema.fields.password.label}
+                      size="large"
+                      type="password"
+                      className={styles.Honeypot}
                       {...getFieldProps("password")}
                     />
                     {touched.password && errors.password ? (
