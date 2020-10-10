@@ -1,154 +1,166 @@
-import React, { useState } from 'react';
-import * as Yup from 'yup';
-import { Form, Formik } from 'formik';
-import { Button } from '../../../components/button';
-import styles from './form.module.scss';
-import {UsersOutline} from '../../../components/icon';
-import Footer from '../../../components/footer'
-import { Input } from '../../../components/input';
-import gos from '../../../assets/gos.png';
-import {AddOutline} from '../../../components/icon'
+import React, { useState } from "react";
+import * as Yup from "yup";
+import { Form, Formik } from "formik";
+import { Button } from "../../../components/button";
+import styles from "./form.module.scss";
+import { UsersOutline } from "../../../components/icon";
+import Footer from "../../../components/footer";
+// import { Input } from '../../../components/input';
+import { Input } from "antd";
+import gos from "../../../assets/gos.png";
+import { AddOutline } from "../../../components/icon";
+import "./custom.vendor.scss";
 
-const AuthForm = ({ onSubmitHandler, onCodeHandler, role = 'client' }) => {
-  const [btnLabel, setBtnLabel] = useState('ДАЛЕЕ');
+const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
+  const [btnLabel, setBtnLabel] = useState("ДАЛЕЕ");
   const [first, setFirst] = useState(true);
   const formSchema = {
-    name: 'login',
-    title: 'Вход в ВТБ-Онлайн',
+    name: "login",
+    title: "Вход в ВТБ-Онлайн",
     fields: {
       login: {
-        label: 'Номер телефона',
-        name: 'login',
-        defaultValue: '',
-        rule: Yup.string().required('Введите номер телефона'),
+        label: "Номер телефона",
+        name: "login",
+        defaultValue: "",
+        rule: Yup.string().required("Введите номер телефона"),
       },
       password: {
-        label: 'Код из СМС',
-        name: 'password',
-        defaultValue: '',
+        label: "Код из СМС",
+        name: "password",
+        defaultValue: "",
         // rule: Yup.string().required('Введите код из СМС'),
         rule: Yup.string()
           .nullable()
-          .when('login', {
+          .when("login", {
             is: (val) => val && val.length && !first,
-            then: Yup.string().nullable().required('Введите код из СМС'),
+            then: Yup.string().nullable().required("Введите код из СМС"),
           }),
       },
     },
   };
 
   return (
-      <>
-        <div className="logo-background">
-          <Formik
-              validateOnChange
-              validateOnBlur
-              initialValues={{
-                login: formSchema.fields.login.defaultValue,
-                password: formSchema.fields.password.defaultValue,
-              }}
-              validationSchema={Yup.object({
-                login: formSchema.fields.login.rule,
-                password: formSchema.fields.password.rule,
-              })}
+    <>
+      <div className="logo-background">
+        <Formik
+          validateOnChange
+          validateOnBlur
+          initialValues={{
+            login: formSchema.fields.login.defaultValue,
+            password: formSchema.fields.password.defaultValue,
+          }}
+          validationSchema={Yup.object({
+            login: formSchema.fields.login.rule,
+            password: formSchema.fields.password.rule,
+          })}
 
-              // onSubmit={(values, { setSubmitting, setFieldError }) => {
-              //   onSubmitHandler(role, values, setFieldError);
-              //   setSubmitting(false);
-              // }}
-          >
-            {({
-                handleSubmit, errors, getFieldProps, touched, dirty, isValid, values, setFieldError,
-              }) => (
-                <div className={styles.container}>
-                  <Form
-                      className={styles.form}
-                      onSubmit={handleSubmit}
-                  >
-                    <h3 className={styles.form__header}>{formSchema.title}</h3>
+          // onSubmit={(values, { setSubmitting, setFieldError }) => {
+          //   onSubmitHandler(role, values, setFieldError);
+          //   setSubmitting(false);
+          // }}
+        >
+          {({
+            handleSubmit,
+            errors,
+            getFieldProps,
+            touched,
+            dirty,
+            isValid,
+            values,
+            setFieldError,
+          }) => (
+            <div className={styles.container}>
+              <Form className={styles.form} onSubmit={handleSubmit}>
+                <h3 className={styles.form__header}>{formSchema.title}</h3>
 
-                    <div className={styles.form__groupField}>
-                      <Input
-                          placeholder={formSchema.fields.login.label}
-                          type="text"
-                          size="xl"
-                          variant="outline"
-                          prefix={<UsersOutline />}
-                          {...getFieldProps('login')}
-                      />
-                      {touched.login && errors.login ? (
-                          <div className={styles.form__groupFieldError}>{errors.login}</div>
-                      ) : null}
+                <div className={styles.form__groupField}>
+                  <Input
+                    placeholder={formSchema.fields.login.label}
+                    type="text"
+                    size="large"
+                    {...getFieldProps("login")}
+                  />
+                  {touched.login && errors.login ? (
+                    <div className={styles.form__groupFieldError}>
+                      {errors.login}
                     </div>
-
-                    {!first && <div className={styles.form__groupField}>
-                      <Input
-                          placeholder={formSchema.fields.password.label}
-                          size="xl"
-                          variant="outline"
-                          type="password"
-                          {...getFieldProps('password')}
-                      />
-                      {touched.password && errors.password ? (
-                          <div className={styles.form__groupFieldError}>{errors.password}</div>
-                      ) : null}
-                    </div>
-                    }
-
-                    {errors.server ? (
-                        <div className={styles.form__groupFieldError}>{errors.server}</div>
-                    ) : null}
-
-                    <Button
-                        onClick={() => {
-                          if (first) {
-                            setBtnLabel('Войти');
-                            setFirst(false);
-                            onSubmitHandler(values, setFieldError);
-                          } else {onCodeHandler(values, setFieldError)}
-                        }}
-                        className={styles.form__submit}
-                        block
-                        isDisabled={!dirty || !isValid}
-                    >
-                      {btnLabel}
-                    </Button>
-                    <br/>
-                    <Button
-                        color="#0a2896"
-                        onClick={() => {}}
-                        onKeyPress={function noRefCheck() {}}
-                        size="sm"
-                        text="Кнопка ссылкой"
-                        textColor="#fff"
-                        type="link"
-                    >
-                      ВОССТАНОВЛЕНИЕ ДОСТУПА
-                    </Button>
-                      <div className={styles.gos}>
-                      <img src={gos} className={styles.icon} alt="gos"/>
-                    <Button
-                        color="#0a2896"
-                        onClick={() => {}}
-                        onKeyPress={function noRefCheck() {}}
-                        size="sm"
-                        text="Кнопка ссылкой"
-                        textColor="#fff"
-                        type="link"
-                        className={styles.gos}
-                        icon={<AddOutline color="#10BF6A" />}
-                    >
-                      СТАТЬ КЛИЕНТОМ ВТБ ЧЕРЕЗ ГОСУСЛУГИ
-                    </Button>
-                      </div>
-                  </Form>
+                  ) : null}
                 </div>
-            )}
-          </Formik>
-        </div>
-        <Footer />
-      </>
-);
+
+                {!first && (
+                  <div className={styles.form__groupField}>
+                    <Input
+                      placeholder={formSchema.fields.password.label}
+                      size="large"
+                      type="password"
+                      {...getFieldProps("password")}
+                    />
+                    {touched.password && errors.password ? (
+                      <div className={styles.form__groupFieldError}>
+                        {errors.password}
+                      </div>
+                    ) : null}
+                  </div>
+                )}
+
+                {errors.server ? (
+                  <div className={styles.form__groupFieldError}>
+                    {errors.server}
+                  </div>
+                ) : null}
+
+                <Button
+                  onClick={() => {
+                    if (first) {
+                      setBtnLabel("Войти");
+                      setFirst(false);
+                      onSubmitHandler(values, setFieldError);
+                    } else {
+                      onCodeHandler(values, setFieldError);
+                    }
+                  }}
+                  className={styles.form__submit}
+                  block
+                  isDisabled={!dirty || !isValid}
+                >
+                  {btnLabel}
+                </Button>
+                <br />
+                <Button
+                  color="#0a2896"
+                  onClick={() => {}}
+                  onKeyPress={function noRefCheck() {}}
+                  size="sm"
+                  text="Кнопка ссылкой"
+                  textColor="#fff"
+                  type="link"
+                >
+                  ВОССТАНОВЛЕНИЕ ДОСТУПА
+                </Button>
+                <div className={styles.gos}>
+                  <img src={gos} className={styles.icon} alt="gos" />
+                  <Button
+                    color="#0a2896"
+                    onClick={() => {}}
+                    onKeyPress={function noRefCheck() {}}
+                    size="sm"
+                    text="Кнопка ссылкой"
+                    textColor="#fff"
+                    type="link"
+                    className={styles.gos}
+                    icon={<AddOutline color="#10BF6A" />}
+                  >
+                    СТАТЬ КЛИЕНТОМ ВТБ ЧЕРЕЗ ГОСУСЛУГИ
+                  </Button>
+                </div>
+              </Form>
+            </div>
+          )}
+        </Formik>
+      </div>
+      <Footer />
+    </>
+  );
 };
 
 export default AuthForm;
