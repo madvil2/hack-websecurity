@@ -30,5 +30,5 @@ export default {
   ERROR100: '#FDEEF6',
   ERROR200: '#FEB3D2',
   ERROR400: '#FE77AD',
-  ERROR700: '#FF3399',
+  ERROR700: '#ff2b00',
 };

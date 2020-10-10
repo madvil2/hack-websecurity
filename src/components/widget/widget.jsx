@@ -94,7 +94,7 @@ const Widget = ({ type = 'success' }) => {
                   r="52"
                   fill={
                     type === 'danger'
-                      ? colors.ERROR
+                      ? colors.ERROR700
                       : type === 'warning'
                       ? colors.WARNING
                       : colors.SUCCESS700
@@ -149,7 +149,7 @@ const WidgetHeader = styled.div`
   text-align: left;
   background-color: ${({ type }) =>
     type === 'danger'
-      ? colors.ERROR
+      ? colors.ERROR700
       : type === 'warning'
       ? colors.WARNING
       : colors.SUCCESS700};
