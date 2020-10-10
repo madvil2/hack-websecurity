@@ -39,7 +39,7 @@ const Home = () => {
         <div className={styles.card_container}>
           {cards.map(card => (
             <div key={card.id} className={cx({
-              [styles.card]: true,
+            [styles.card]: true,
               [styles.credit_card]: card.type === 'credit',
               [styles.debit_card]: card.type === 'debit',
             })}>

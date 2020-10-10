@@ -54,4 +54,5 @@ export {
   XlsxFileIcon,
   ImageFileIcon,
   FileIcon,
+  Keyboard,
 } from './Icon';
