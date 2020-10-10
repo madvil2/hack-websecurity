@@ -2,7 +2,7 @@ import axios from "axios";
 import handleErrors from "../utils/handleErrors";
 
 const getAxios = () => {
-  axios.defaults.headers.common["Authorization"] =
+  axios.defaults.headers.common["User-Token"] =
     localStorage.getItem("token") || "";
 
   return axios;

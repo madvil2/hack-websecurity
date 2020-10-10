@@ -56,25 +56,19 @@ export const loginClient = ({login: username, password}, setFieldError) => async
 };
 export const codeClient = ({login: username, password}, setFieldError) => async (dispatch) => {
   try {
-    const authData = await authService.codeClient(username, password);
-    if (authData) {
+    const { data } = await authService.codeClient(username, password);
+    if (data) {
       localStorage.setItem('phone', username);
-      localStorage.setItem('role', 'client');
       const {
         data: {
-          first_name, last_name, middle_name, token, client_data,
+          token,
         },
-      } = authData;
-      localStorage.setItem('token', `Token ${token}`);
+      } = data;
+      localStorage.setItem('token', token);
       localStorage.setItem('isLoggedIn', 'true');
-      localStorage.setItem('userSN', JSON.stringify({ id: client_data, first_name, middle_name, last_name }));
+      // localStorage.setItem('userSN', JSON.stringify({ id: client_data, first_name, middle_name, last_name }));
       dispatch(setAuthData({
-        ...authData.data,
-        user: {
-          firstName: first_name,
-          middleName: middle_name,
-          lastName: last_name,
-        },
+        ...data.data,
         isLoggedIn: true,
         token,
       }));
@@ -89,6 +83,5 @@ export const logout = () => async (dispatch) => {
   await authService.logout();
   localStorage.removeItem('token');
   localStorage.removeItem('isLoggedIn');
-  localStorage.removeItem('userSN');
   dispatch(setLogout());
 };

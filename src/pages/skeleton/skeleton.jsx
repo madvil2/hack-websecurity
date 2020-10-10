@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { SideMenu } from '../../components/sideMenu';
 import routes from './routes';
@@ -11,6 +11,7 @@ import styles from './skeleton.module.scss';
 import cx from 'classnames';
 import Footer from '../../components/footer';
 import Widget from '../../components/widget';
+import toAPI from '../../services/toAPI.js';
 
 const StyledMainContainer = styled.div`
   display: flex;
@@ -55,6 +56,17 @@ const links = () => {
 
 const Skeleton = () => {
   const [countPerson, setCountPerson] = useState(1);
+  const [userInfo, setUserInfo] = useState({});
+  const fetchData = async () => {
+    const data = await toAPI.getUserInfo();
+    if (data) {
+      setUserInfo(data);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+    useEffect(() => console.log(userInfo), [userInfo]);
   return (
     <BrowserRouter history={history}>
       <div className={cx({ [styles.blur_container]: countPerson !== 1 })} />
@@ -71,7 +83,7 @@ const Skeleton = () => {
                   key={route.path}
                   exact
                   path={route.path}
-                  component={route.component}
+                  component={() => route.component(userInfo)}
                 />
               ))}
             </Switch>

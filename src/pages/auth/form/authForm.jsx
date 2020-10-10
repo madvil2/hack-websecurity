@@ -3,7 +3,6 @@ import * as Yup from "yup";
 import { Form, Formik } from "formik";
 import { Button } from "../../../components/button";
 import styles from "./form.module.scss";
-import { UsersOutline } from "../../../components/icon";
 import Footer from "../../../components/footer";
 // import { Input } from '../../../components/input';
 import { Input } from "antd";
@@ -76,7 +75,7 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
                 <div className={styles.form__groupField}>
                   <Input
                     placeholder={formSchema.fields.login.label}
-                    type="text"
+                    // type="number"
                     size="large"
                     {...getFieldProps("login")}
                   />
