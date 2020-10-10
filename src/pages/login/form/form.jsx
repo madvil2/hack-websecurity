@@ -30,9 +30,6 @@ const LoginForm = ({ onSubmitHandler, role }) => {
 
   return (
     <div className="logo-background">
-      <div className='App-logo'>
-        <img src={LogoWhite} />
-      </div>
       <Formik
         validateOnChange
         validateOnBlur

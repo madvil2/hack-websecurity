@@ -1,0 +1,24 @@
+.block {
+
+}
+
+.rule {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  text-align: left;
+  &:not(:last-child) {
+    border-bottom: 1px solid #dbe1ee;
+  }
+}
+
+.title {
+  font-size: 23px;
+}
+
+.description {
+  font-size: 17px;
+  color: #6b7683;
+  padding-bottom: 5px;
+}

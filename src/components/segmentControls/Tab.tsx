@@ -53,7 +53,7 @@ const TabItem = styled.button<TabProps>`
 			padding: 5px 8px;
 			outline: none;
 			flex: 1 1 auto;
-			height: 34px;
+			height: 42px;
 			box-sizing: border-box;
 			background: ${p.active ? colors.WHITE : colors.BACKGROUND};
 			border-radius: 8px;

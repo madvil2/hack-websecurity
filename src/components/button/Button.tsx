@@ -76,7 +76,7 @@ export const Button: React.FC<ButtonProps> = ({
 const DefaultButton = styled.button<any>`
   position: relative;
   
-  font-family: SBSansInterface-Regular, sans-serif;
+  font-family: VTB, sans-serif;
   line-height: 1.5rem;
   text-align: center;
   outline: none;
@@ -104,10 +104,7 @@ const DefaultButton = styled.button<any>`
 
   ${(props) => {
     if (props.type === buttonType.link)
-      return `-webkit-transition: .3s linear;
-      -o-transition: .3s linear;
-      transition: .3s linear;
-      text-decoration: none;
+      return `text-decoration: none;
       background-color: transparent;
       padding: 0;
       border: 0;
@@ -119,10 +116,6 @@ const DefaultButton = styled.button<any>`
         right: 0;
         bottom: 0;
         background-color: ${props.color};
-        height: ${props.size === buttonSize.sm ? `1px` : `2px`};
-        -webkit-transition: .3s linear;
-        -o-transition: .3s linear;
-        transition: .3s linear;
       }`;
     else
       return `
@@ -135,7 +128,7 @@ const DefaultButton = styled.button<any>`
       -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center;
-      border-radius: 21px;
+      border-radius: 6px;
       box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.12), 0 0 1px 0 rgba(0, 0, 0, 0.12);
       ${props.block ? `width: 100%;` : ''}`;
   }}
@@ -144,6 +137,7 @@ const DefaultButton = styled.button<any>`
     if (!props.isDisabled && !props.loading) {
       if (props.type === buttonType.link)
         return `&:hover span {
+                color: #009fdf;
           -webkit-filter:brightness(80%);
           filter:brightness(80%);
 

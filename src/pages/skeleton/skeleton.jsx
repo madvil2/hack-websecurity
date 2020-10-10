@@ -1,81 +1,87 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { SideMenu } from '../../components/sideMenu';
 import routes from './routes';
 import history from '../../history';
 import styled from 'styled-components';
-import {
-  HomeOutline,
-  ListOutline,
-  SettingsOutline,
-} from '../../components/icon';
-import Widget from '../../components/widget';
 import colors from '../../colors';
+import checkFace from '../../components/checkFace/checkFace';
+import P5Wrapper from 'react-p5-wrapper';
+import styles from './skeleton.module.scss';
+import cx from 'classnames';
+import Footer from '../../components/footer';
+import Widget from '../../components/widget';
 
 const StyledMainContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100%;
+  flex-direction: column;
 `;
 const StyledContentContainer = styled.div`
   display: flex;
   flex: 1;
   flex-basis: 80%;
-  height: 100%;
-  padding-top: 1vw;
-  padding-right: 1vw;
-  padding-bottom: 1vw;
+  // height: 100%;
+  padding: 1vw 1vw 0;
   border-radius: 1rem;
   background-color: ${colors.BACKGROUND};
 `;
+const StyledScrollContainer = styled.div`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: scroll;
+`;
 
 const links = () => {
-  const role = localStorage.getItem('role');
   return [
     {
-      label: role === 'client' ? 'Мои заявки' : 'Мои задачи',
-      path: '/statuses',
-      key: '/statuses',
-      icon: <HomeOutline />,
-      iconActive: <HomeOutline color={colors.INFO} />,
+      label: 'Мои продукты',
+      path: '/products',
+      key: '/products',
     },
     {
-      label: 'Каталог услуг',
-      path: '/services',
-      key: '/services',
-      icon: <ListOutline />,
-      iconActive: <ListOutline color={colors.INFO} />,
+      label: 'Переводы',
+      path: '/transaction',
+      key: '/transaction',
     },
     {
       label: 'Настройки',
       path: '/settings',
       key: '/settings',
-      icon: <SettingsOutline />,
-      iconActive: <SettingsOutline color={colors.INFO} />,
     },
   ];
 };
 
-const Skeleton = () => (
-  <BrowserRouter history={history}>
-    <StyledMainContainer>
-      <SideMenu links={links()} />
-      <StyledContentContainer>
-        <Switch>
-          {Object.values(routes).map((route) => (
-            <Route
-              key={route.path}
-              exact
-              path={route.path}
-              component={route.component}
-            />
-          ))}
-        </Switch>
-        <Widget type={'success'} />
-      </StyledContentContainer>
-    </StyledMainContainer>
-  </BrowserRouter>
-);
+const Skeleton = () => {
+  const [countPerson, setCountPerson] = useState(1);
+  return (
+    <BrowserRouter history={history}>
+      <div className={cx({ [styles.blur_container]: countPerson !== 1 })} />
+      <StyledMainContainer>
+        <div style={{ display: 'none' }}>
+          {/*<P5Wrapper sketch={(p) => checkFace(p, setCountPerson)} />*/}
+        </div>
+        <SideMenu links={links()} />
+        <StyledScrollContainer>
+          <StyledContentContainer>
+            <Switch>
+              {Object.values(routes).map((route) => (
+                <Route
+                  key={route.path}
+                  exact
+                  path={route.path}
+                  component={route.component}
+                />
+              ))}
+            </Switch>
+            <Widget type={'success'} />
+          </StyledContentContainer>
+          <Footer />
+        </StyledScrollContainer>
+      </StyledMainContainer>
+    </BrowserRouter>
+  );
+};
 
 export default Skeleton;
