@@ -72,7 +72,7 @@ const Skeleton = () => (
             />
           ))}
         </Switch>
-        <Widget></Widget>
+        <Widget type={'success'} />
       </StyledContentContainer>
     </StyledMainContainer>
   </BrowserRouter>

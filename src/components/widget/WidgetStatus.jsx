@@ -11,12 +11,7 @@ export const WidgetStatus = ({ type }) => {
         height="36"
         viewBox="0 0 42 42"
       >
-        <g
-          fill="none"
-          fill-rule="evenodd"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
+        <g fill="none">
           <g>
             <g>
               <g>
@@ -26,7 +21,7 @@ export const WidgetStatus = ({ type }) => {
                     cy="21"
                     r="21"
                     fill={
-                      type === 'dangerous'
+                      type === 'danger'
                         ? colors.ERROR
                         : type === 'warning'
                         ? colors.WARNING
@@ -35,7 +30,6 @@ export const WidgetStatus = ({ type }) => {
                   />
                   <path
                     stroke="#FFF"
-                    stroke-width="3"
                     d="M27.3 14.7L14.7 27.3M14.7 14.7L27.3 27.3"
                   />
                 </g>
@@ -45,7 +39,7 @@ export const WidgetStatus = ({ type }) => {
         </g>
       </svg>
       <StatusText>
-        {type === 'dangerous'
+        {type === 'danger'
           ? 'Опасность'
           : type === 'warning'
           ? 'Подозрительный'
