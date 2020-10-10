@@ -1,32 +1,32 @@
-import React from 'react';
-import styled from 'styled-components';
-import colors from '../../colors.ts';
-import { WidgetStatus } from './WidgetStatus';
-import { WidgetControl } from './WidgetControl';
+import React from "react";
+import styled from "styled-components";
+import colors from "../../colors.ts";
+import { WidgetStatus } from "./WidgetStatus";
+import { WidgetControl } from "./WidgetControl";
 
-const Widget = ({ type = 'success' }) => {
+const Widget = ({ type = "success" }) => {
   const [active, setActive] = React.useState(false);
   const [controls, setControls] = React.useState([
     {
-      title: 'Отключает отображение данных',
-      description: 'Если вокруг небезопасно',
+      title: "Отключает отображение данных",
+      description: "Если вокруг небезопасно",
       checked: false,
     },
     {
-      title: 'Заблокировать приложение',
-      description: '⌘⇧4',
+      title: "Заблокировать приложение",
+      description: "⌘⇧4",
       checked: false,
     },
     {
-      title: 'Что-то еще',
+      title: "Что-то еще",
       checked: false,
     },
     {
-      title: 'Что-то еще',
+      title: "Что-то еще",
       checked: false,
     },
     {
-      title: 'Что-то еще',
+      title: "Что-то еще",
       checked: false,
     },
   ]);
@@ -56,11 +56,11 @@ const Widget = ({ type = 'success' }) => {
           <WidgetBody>
             <StatusDescription>
               <div className="text">
-                {type === 'danger'
-                  ? 'Вы под угрозой'
-                  : type === 'warning'
-                  ? 'Подозрительная активность'
-                  : 'Все хорошо'}
+                {type === "danger"
+                  ? "Вы под угрозой"
+                  : type === "warning"
+                  ? "Подозрительная активность"
+                  : "Все хорошо"}
               </div>
             </StatusDescription>
             <ControlContainer>
@@ -93,9 +93,9 @@ const Widget = ({ type = 'success' }) => {
                   cy="52"
                   r="52"
                   fill={
-                    type === 'danger'
+                    type === "danger"
                       ? colors.ERROR700
-                      : type === 'warning'
+                      : type === "warning"
                       ? colors.WARNING
                       : colors.SUCCESS700
                   }
@@ -128,6 +128,7 @@ const WidgetComponent = styled.div`
   right: 20px;
   bottom: 20px;
   width: 420px;
+  z-index: 10;
 `;
 
 const WidgetContent = styled.div`
@@ -148,9 +149,9 @@ const WidgetContent = styled.div`
 const WidgetHeader = styled.div`
   text-align: left;
   background-color: ${({ type }) =>
-    type === 'danger'
+    type === "danger"
       ? colors.ERROR700
-      : type === 'warning'
+      : type === "warning"
       ? colors.WARNING700
       : colors.SUCCESS700};
   padding: 24px 24px 0 24px;
