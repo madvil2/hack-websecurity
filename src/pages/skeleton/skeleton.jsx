@@ -12,6 +12,8 @@ import cx from 'classnames';
 import Footer from '../../components/footer';
 import Widget from '../../components/widget';
 import toAPI from '../../services/toAPI.js';
+import Modal from '../../components/modal';
+import { Input } from '../../components/input';
 
 const StyledMainContainer = styled.div`
   display: flex;
@@ -56,23 +58,55 @@ const links = () => {
 
 const Skeleton = () => {
   const [countPerson, setCountPerson] = useState(1);
+  const [checkFaceW, setCheckFaceW] = useState(true);
   const [userInfo, setUserInfo] = useState({});
-  const fetchData = async () => {
-    const data = await toAPI.getUserInfo();
-    if (data) {
+  const [isOpen, setIsOpen] = useState(false);
+  const fetchData = async (fingerprint) => {
+    const data = await toAPI.getUserInfo(fingerprint);
+    if (data && data !== 403) {
       setUserInfo(data);
+    } if (data && data === 403) {
+      setIsOpen(true);
     }
   };
   useEffect(() => {
-    fetchData();
-  }, []);
-    useEffect(() => console.log(userInfo), [userInfo]);
+      fetchData(window.PX.settings.fingerprint);
+  }, [window.PX.settings.fingerprint]);
+
+  const [code, setCode] = useState('');
+  useEffect(() => console.log(countPerson), [countPerson]);
+  const sendCode = async () => {
+    const data = await toAPI.sendCode(code);
+    if (data) {
+      setIsOpen(false);
+      setUserInfo(data);
+    }
+  };
   return (
     <BrowserRouter history={history}>
-      <div className={cx({ [styles.blur_container]: countPerson !== 1 })} />
+      <Modal
+        visible={isOpen}
+        title="Внимание!"
+        onOk={sendCode}
+         onCancel={() => {}}
+      >
+        <p className={styles.text_modal}>
+          Похоже кто-то пытается выдать себя за вас, введите код безопасности чтобы мы убедились что все хорошо!
+        </p>
+        <div style={{ marginBottom: '32px' }}>
+          <Input
+            value={code}
+            onChange={setCode}
+            placeholder="Введите код безопасности"
+            size='xl'
+            type='password'
+          />
+        </div>
+      </Modal>
+      <div className={cx({ [styles.blur_container]: countPerson !== 1 })}>
       <StyledMainContainer>
         <div style={{ display: 'none' }}>
-          {/*<P5Wrapper sketch={(p) => checkFace(p, setCountPerson)} />*/}
+          {checkFaceW && <P5Wrapper sketch={(p) => checkFace(p, setCountPerson)} /> }
         </div>
         <SideMenu links={links()} />
         <StyledScrollContainer>
@@ -87,11 +121,12 @@ const Skeleton = () => {
                 />
               ))}
             </Switch>
-            <Widget type={'success'} />
+            <Widget type={'success'} checkFace={checkFaceW} setCheckFace={setCheckFaceW} />
           </StyledContentContainer>
           <Footer />
         </StyledScrollContainer>
       </StyledMainContainer>
+      </div>
     </BrowserRouter>
   );
 };

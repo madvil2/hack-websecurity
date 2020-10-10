@@ -1,4 +1,7 @@
 import authService from '../../../services/authService';
+import notification, {
+  NOTIFICATION_TYPE__SUCCESS,
+} from '../../../services/notifWindowService.js';
 
 export const AUTH_SET_DATA = 'AUTH_SET_DATA';
 export const AUTH_LOGOUT = 'AUTH_LOGOUT';
@@ -45,9 +48,10 @@ export const login = (role, {login: username, password }, setFieldError) => asyn
 
 export const loginClient = ({login: username, password}, setFieldError) => async () => {
   try {
-    const authData = await authService.loginClient(username);
-    if (authData) {
+    const {status, data } = await authService.loginClient(username);
+    if (status === 201 && data) {
       localStorage.setItem('phone', username);
+      notification.open(NOTIFICATION_TYPE__SUCCESS, `Код авторизации ${data.data.code}`);
       return true;
     }
   } catch (err) {
