@@ -9987,6 +9987,11 @@ react-scripts@3.4.3:
   optionalDependencies:
     fsevents "2.1.2"
 
+react-simple-keyboard@^2.4.56:
+  version "2.4.56"
+  resolved "https://registry.yarnpkg.com/react-simple-keyboard/-/react-simple-keyboard-2.4.56.tgz#847951776602034a33df616603e6417ab9469b90"
+  integrity sha512-DnNPBzOT91e+ljSld1KdSBhExRx4uJ+d586uWSxbtrctpJrkx+S3hrPz2xJQB0iTGyvPoGcOKTBVdm5+1M8VaA==
+
 react@^16.13.1:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
@@ -10798,6 +10803,21 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.2.tgz#b5fdc08f1287ea1178628e415e25132b73646c6d"
   integrity sha1-tf3AjxKH6hF4Yo5BXiUTK3NkbG0=
+
+simple-keyboard-input-mask@^3.0.19:
+  version "3.0.19"
+  resolved "https://registry.yarnpkg.com/simple-keyboard-input-mask/-/simple-keyboard-input-mask-3.0.19.tgz#e1046100d20387324a524f9840d2fcaab2ce6ac1"
+  integrity sha512-IkPsXqQ6PQ0Iu9yAIHuGYrDvwL3AdhWwOR1agKB2ZBcV35Q7INP+eUReUrPsc0qNtvhktL3iAVirZyVne0GgOw==
+
+simple-keyboard-layouts@^1.14.15:
+  version "1.14.15"
+  resolved "https://registry.yarnpkg.com/simple-keyboard-layouts/-/simple-keyboard-layouts-1.14.15.tgz#2336dbcce98bf00faa9cb0b435427c4daa9989c9"
+  integrity sha512-/q9xfrKn5UP38/ADneEYaLLn3zD3Ngzdhu2/VY1A9K8hfY/tdNWugi2ui8DNJzE0YkG8x9Nw0VYVNQljEzLGbA==
+
+simple-keyboard@^2.30.37:
+  version "2.30.37"
+  resolved "https://registry.yarnpkg.com/simple-keyboard/-/simple-keyboard-2.30.37.tgz#7767ab95a4ecb80010db5d4a171fd7e1eb0b0876"
+  integrity sha512-L5JxMY2/oWZVC0Z7srrtXllbo3sQ9QzaG8JX7KMa/lKUds9J7lkRuZmJT0vuvE0GTh11zdqqzZpl9pKjm6Wqsw==
 
 simple-swizzle@^0.2.2:
   version "0.2.2"

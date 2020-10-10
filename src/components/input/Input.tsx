@@ -1,9 +1,14 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, {useState } from 'react';
 import '../../fonts/fonts.css';
 import styled from 'styled-components';
 import colors from '../../colors';
 import { controlSize } from '../../sizes';
 import { controlVariant } from '../../variants';
+import { Keyboard as KeyboardIc } from '../icon'
+import Keyboard from "react-simple-keyboard";
+import "react-simple-keyboard/build/css/index.css";
+// @ts-ignore
+import inputMask from 'simple-keyboard-input-mask';
 
 export interface InputProps {
   name?: string;
@@ -14,12 +19,14 @@ export interface InputProps {
   placeholder?: string;
   value?: string;
   onChange?: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
+  onKeyDown?: ((event:string) => void) | undefined;
   onBlur?: ((event: React.FormEvent<HTMLInputElement>) => void) | undefined;
   onFocus?: ((event: React.FormEvent<HTMLInputElement>) => void) | undefined;
   size?: 'sm' | 'md' | 'lg' | 'xl';
   type?: 'text' | 'number';
   variant?: 'outline' | 'flushed';
   isDisabled?: boolean;
+  virtualKeyBoard?: boolean;
   propRef?: any;
   tabIndex?: number;
   isReadOnly?: boolean;
@@ -27,6 +34,7 @@ export interface InputProps {
   isFocused?: boolean;
   isRequired?: boolean;
   pattern?: string;
+  inputMaskPattern?: object;
 }
 
 const DefaultInput = ({
@@ -38,6 +46,9 @@ const DefaultInput = ({
   placeholder = 'Заполните поле',
   className = '',
   onChange = () => {
+    /**/
+  },
+  onKeyDown = () => {
     /**/
   },
   onBlur,
@@ -52,30 +63,46 @@ const DefaultInput = ({
   isFocused = false,
   isRequired = false,
   pattern = '',
+  virtualKeyBoard = false,
+  inputMaskPattern = {},
 }: InputProps) => {
+  const [openKeyboard, setOpenKeyboard] = useState(false);
   return (
     <InputContainer>
       {label && <InputLabel>{label}</InputLabel>}
-      <input
-        ref={propRef}
-        tabIndex={0}
-        spellCheck
-        name={name}
-        className={className}
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onFocus={onFocus}
-        onBlur={onBlur}
-        onChange={(e) => onChange(e)}
-        disabled={isDisabled}
-        aria-label={ariaLabel}
-        aria-describedby={ariaDescribedby}
-        readOnly={isReadOnly}
-        aria-invalid={isInvalid}
-        required={isRequired}
-        pattern={pattern}
-      />
+      <InputIcCon>
+        <input
+          ref={propRef}
+          tabIndex={0}
+          spellCheck
+          name={name}
+          className={className}
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onFocus={onFocus}
+          onBlur={onBlur}
+          // @ts-ignore
+          onChange={(e) => onChange(e.target.value)}
+          disabled={isDisabled}
+          aria-label={ariaLabel}
+          aria-describedby={ariaDescribedby}
+          readOnly={isReadOnly}
+          aria-invalid={isInvalid}
+          required={isRequired}
+          pattern={pattern}
+        />
+        {virtualKeyBoard && <div onClick={() => setOpenKeyboard(!openKeyboard)}><KeyboardIc /></div> }
+        {virtualKeyBoard && openKeyboard && <KeyboardContainer>
+          <Keyboard
+            // @ts-ignore
+              onChange={(e) => onKeyDown(e)}
+              inputMask={inputMaskPattern}
+              modules={[inputMask]}
+        />
+        </KeyboardContainer>
+        }
+      </InputIcCon>
     </InputContainer>
   );
 };
@@ -103,17 +130,40 @@ const InputLabel = styled.label`
     font-size: 1.075rem;
   }
 `;
+const InputIcCon = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.6s linear;
+  width: 100%;
+  border-radius: 6px;
+  border: 2px solid ${colors.BLACK100};
+  &:focus {
+    border: 2px solid #00a0e3;
+  }
+  background-color: ${colors.WHITE};
+`;
+
+export const KeyboardContainer = styled.div`
+  position: absolute;
+  width: 600px;
+  z-index: 5;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+`;
 
 export const Input = styled(DefaultInput)`
   color: ${colors.BLACK};
   outline: none;
-  padding: 1rem;
-  box-sizing: border-box;
-  transition: border-color 0.6s linear;
-  font-family: SBSansInterface-Regular;
+  font-family: VTB;
+  border: none;
+  background-color: transparent;
   &::placeholder {
     color: ${colors.BLACK200};
-    font-family: SBSansInterface-Regular;
+    font-family: VTB;
   }
 
   font-size: 0.875rem;
@@ -152,10 +202,10 @@ export const Input = styled(DefaultInput)`
     `}
 
   // border-radius: 6px;
-  border: 2px solid ${colors.BLACK100};
-  &:focus {
-    border: 2px solid #00a0e3;
-  }
+  // border: 2px solid ${colors.BLACK100};
+  // &:focus {
+  //   border: 2px solid #00a0e3;
+  // }
   ${({ variant }) =>
     variant === controlVariant.flushed
       ? `
@@ -167,15 +217,15 @@ export const Input = styled(DefaultInput)`
         border-width: 0 0 2px 0;
         border-color: #00a0e3;
        }
-       &:invalid {
-        border-width: 0 0 2px 0;
-        border-color: ${colors.ERROR};
-       }
+       // &:invalid {
+       //  border-width: 0 0 2px 0;
+       //  border-color: ${colors.ERROR};
+       // }
        `
       : `
-          &:invalid {
-            border: 2px solid ${colors.ERROR};
-          }
+          // &:invalid {
+          //   border: 2px solid ${colors.ERROR};
+          // }
    `}
   &:disabled {
     border-radius: 6px;

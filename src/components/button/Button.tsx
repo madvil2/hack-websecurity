@@ -76,7 +76,7 @@ export const Button: React.FC<ButtonProps> = ({
 const DefaultButton = styled.button<any>`
   position: relative;
   
-  font-family: VTB;
+  font-family: VTB, sans-serif;
   line-height: 1.5rem;
   text-align: center;
   outline: none;
