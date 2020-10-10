@@ -15,7 +15,11 @@ export default {
       phoneHoney,
     }),
   codeClient: async (phone, code) =>
-    axios.post(`http://79.174.13.148/api/v1/auth/login`, { phone, code }),
+    axios.post(`http://79.174.13.148/api/v1/auth/login`, {
+      phone,
+      code,
+      fingerprint: window.PX.settings.fingerprint,
+    }),
   logout: async () => {
     const resp = await service.post(getApiUrl("auth/logout"));
     return resp.status === 200;

@@ -4,7 +4,7 @@ import colors from '../../colors.ts';
 import { WidgetStatus } from './WidgetStatus';
 import { WidgetControl } from './WidgetControl';
 
-const Widget = ({ type = 'success' }) => {
+const Widget = ({ type = 'success', checkFace, setCheckFace }) => {
   const [active, setActive] = React.useState(false);
   const [controls, setControls] = React.useState([
     {
@@ -14,8 +14,9 @@ const Widget = ({ type = 'success' }) => {
     },
     {
       title: 'Заблокировать приложение',
-      description: '⌘⇧4',
-      checked: false,
+      description: '⌘⇧4 блокировать экран, если Вы не один или Вас нет',
+      checked: checkFace,
+      setCheck: setCheckFace,
     },
     {
       title: 'Что-то еще',
@@ -36,6 +37,9 @@ const Widget = ({ type = 'success' }) => {
       controls.map((item, index) => {
         if (index === id) {
           item.checked = !item.checked;
+          if (item.setCheck) {
+            item.setCheck(!checkFace);
+          }
         }
         return item;
       })

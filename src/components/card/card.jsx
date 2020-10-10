@@ -91,6 +91,7 @@ const Card = ({ type = 'adressee', value, changeValue }) => {
       </div>
       {type === 'holder' && (
         <div className={styles.SecureCard}>
+          <div className={styles.magnit}/>
           <Input
             size="xl"
             type="password"

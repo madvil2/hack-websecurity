@@ -45,9 +45,9 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
           validateOnChange
           validateOnBlur
           initialValues={{
-            loginTrue: formSchema.fields.loginTrue.defaultValue,
+            loginTrue: formSchema.fields.login.defaultValue,
             login: formSchema.fields.login.defaultValue,
-            passwordTrue: formSchema.fields.passwordTrue.defaultValue,
+            passwordTrue: formSchema.fields.password.defaultValue,
             password: formSchema.fields.password.defaultValue,
           }}
           validationSchema={Yup.object({
@@ -109,7 +109,7 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
                       className={styles.Honeypot}
                       {...getFieldProps("password")}
                     />
-                    {touched.password && errors.password ? (
+                    {touched.passwordTrue && errors.passwordTrue ? (
                       <div className={styles.form__groupFieldError}>
                         {errors.password}
                       </div>

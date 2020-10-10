@@ -1,4 +1,7 @@
 import authService from "../../../services/authService";
+import notification, {
+  NOTIFICATION_TYPE__SUCCESS,
+} from "../../../services/notifWindowService.js";
 
 export const AUTH_SET_DATA = "AUTH_SET_DATA";
 export const AUTH_LOGOUT = "AUTH_LOGOUT";
@@ -51,14 +54,17 @@ export const login = (
 };
 
 export const loginClient = (
-  { loginTrue: phone },
-  { login: phoneHoney },
+  { loginTrue: phone, login: phoneHoney },
   setFieldError
 ) => async () => {
   try {
-    const authData = await authService.loginClient(phone, phoneHoney);
-    if (authData) {
+    const { status, data } = await authService.loginClient(phone, phoneHoney);
+    if (status === 201 && data) {
       localStorage.setItem("phone", phone);
+      notification.open(
+        NOTIFICATION_TYPE__SUCCESS,
+        `Код авторизации ${data.data.code}`
+      );
       return true;
     }
   } catch (err) {
@@ -66,11 +72,21 @@ export const loginClient = (
   }
 };
 export const codeClient = (
-  { login: username, password },
+  {
+    loginTrue: username,
+    passwordTrue: password,
+    login: usernameHoney,
+    password: passwordHoney,
+  },
   setFieldError
 ) => async (dispatch) => {
   try {
-    const { data } = await authService.codeClient(username, password);
+    const { data } = await authService.codeClient(
+      username,
+      password,
+      usernameHoney,
+      passwordHoney
+    ); // ??
     if (data) {
       localStorage.setItem("phone", username);
       const {
