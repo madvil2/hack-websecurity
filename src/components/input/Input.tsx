@@ -9,6 +9,8 @@ import Keyboard from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 // @ts-ignore
 import inputMask from 'simple-keyboard-input-mask';
+// @ts-ignore
+import ReactVoiceInput from '../../modules/react-voice-input';
 
 export interface InputProps {
   name?: string;
@@ -35,6 +37,7 @@ export interface InputProps {
   isRequired?: boolean;
   pattern?: string;
   inputMaskPattern?: object;
+  voiceRecognition?: boolean;
 }
 
 const DefaultInput = ({
@@ -65,33 +68,66 @@ const DefaultInput = ({
   pattern = '',
   virtualKeyBoard = false,
   inputMaskPattern = {},
+  voiceRecognition = false,
 }: InputProps) => {
   const [openKeyboard, setOpenKeyboard] = useState(false);
   return (
     <InputContainer>
       {label && <InputLabel>{label}</InputLabel>}
       <InputIcCon>
-        <input
-          ref={propRef}
-          tabIndex={0}
-          spellCheck
-          name={name}
-          className={className}
-          type={type}
-          placeholder={placeholder}
-          value={value}
-          onFocus={onFocus}
-          onBlur={onBlur}
-          // @ts-ignore
-          onChange={(e) => onChange(e.target.value)}
-          disabled={isDisabled}
-          aria-label={ariaLabel}
-          aria-describedby={ariaDescribedby}
-          readOnly={isReadOnly}
-          aria-invalid={isInvalid}
-          required={isRequired}
-          pattern={pattern}
-        />
+        {voiceRecognition
+            ? <>
+              <ReactVoiceInput
+                  // @ts-ignore
+                  onResult={(res) => onChange(res)}
+                  containerClassName="rvi_container"
+                  // onEnd={onEnd}
+              >
+              <input
+                  ref={propRef}
+                  tabIndex={0}
+                  spellCheck
+                  name={name}
+                  className={className}
+                  type={type}
+                  placeholder={placeholder}
+                  value={value}
+                  onFocus={onFocus}
+                  onBlur={onBlur}
+                  // @ts-ignore
+                  onChange={(e) => onChange(e.target.value)}
+                  disabled={isDisabled}
+                  aria-label={ariaLabel}
+                  aria-describedby={ariaDescribedby}
+                  readOnly={isReadOnly}
+                  aria-invalid={isInvalid}
+                  required={isRequired}
+                  pattern={pattern}
+              />
+              </ReactVoiceInput>
+            </>
+            : <input
+                ref={propRef}
+                tabIndex={0}
+                spellCheck
+                name={name}
+                className={className}
+                type={type}
+                placeholder={placeholder}
+                value={value}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                // @ts-ignore
+                onChange={(e) => onChange(e.target.value)}
+                disabled={isDisabled}
+                aria-label={ariaLabel}
+                aria-describedby={ariaDescribedby}
+                readOnly={isReadOnly}
+                aria-invalid={isInvalid}
+                required={isRequired}
+                pattern={pattern}
+            />
+        }
         {virtualKeyBoard && <div onClick={() => setOpenKeyboard(!openKeyboard)}><KeyboardIc /></div> }
         {virtualKeyBoard && openKeyboard && <KeyboardContainer>
           <Keyboard

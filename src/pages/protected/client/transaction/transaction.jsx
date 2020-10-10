@@ -8,9 +8,6 @@ import {
 } from '../../../../components/segmentControls/index.ts';
 import { Button } from '../../../../components/button/index.ts';
 import Card from '../../../../components/card';
-import HeaderDefault from '../../../../components/content/_parts/header';
-import Body from '../../../../components/content/_parts/body';
-import Content from '../../../../components/content';
 import styles from './Transaction.module.scss';
 
 const Transaction = () => {
@@ -35,7 +32,6 @@ const Transaction = () => {
         [inputName]: e,
       },
     };
-    console.log(newValue);
     setInputsValue(newValue);
     // }
   };

@@ -128,7 +128,7 @@ const DefaultButton = styled.button<any>`
       -webkit-box-pack: center;
       -ms-flex-pack: center;
       justify-content: center;
-      // border-radius: 21px;
+      border-radius: 6px;
       box-shadow: 0 8px 16px -4px rgba(0, 0, 0, 0.12), 0 0 1px 0 rgba(0, 0, 0, 0.12);
       ${props.block ? `width: 100%;` : ''}`;
   }}
