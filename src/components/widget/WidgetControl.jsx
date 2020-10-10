@@ -56,4 +56,8 @@ const WidgetControlContainer = styled.div`
       line-height: 19px;
     }
   }
+
+  .control {
+    padding: 5px 0;
+  }
 `;

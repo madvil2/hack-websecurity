@@ -198,11 +198,11 @@ const StatusDescription = styled.div`
 const ControlContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 10px;
   height: 200px;
   overflow-y: auto;
   margin-top: 24px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   padding-right: 7px;
 `;
 
