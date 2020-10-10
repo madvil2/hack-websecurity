@@ -96,7 +96,7 @@ const Widget = ({ type = 'success' }) => {
                     type === 'danger'
                       ? colors.ERROR700
                       : type === 'warning'
-                      ? colors.WARNING
+                      ? colors.WARNING700
                       : colors.SUCCESS700
                   }
                 />
@@ -127,7 +127,7 @@ const WidgetComponent = styled.div`
   justify-content: flex-end;
   right: 20px;
   bottom: 20px;
-  width: 420px;
+  width: 385px;
 `;
 
 const WidgetContent = styled.div`
