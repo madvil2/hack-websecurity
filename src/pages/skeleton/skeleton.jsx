@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { SideMenu } from '../../components/sideMenu';
 import routes from './routes';
 import history from '../../history';
@@ -9,7 +9,8 @@ import checkFace from '../../components/checkFace/checkFace';
 import P5Wrapper from 'react-p5-wrapper';
 import styles from './skeleton.module.scss';
 import cx from 'classnames';
-import Footer from '../../components/footer'
+import Footer from '../../components/footer';
+import Widget from '../../components/widget';
 
 const StyledMainContainer = styled.div`
   display: flex;
@@ -17,16 +18,16 @@ const StyledMainContainer = styled.div`
   flex-direction: column;
 `;
 const StyledContentContainer = styled.div`
-display: flex;
-flex: 1;
-flex-basis: 80%;
-// height: 100%;
-padding: 1vw 1vw 0;
-border-radius: 1rem;
-background-color: ${colors.BACKGROUND};
+  display: flex;
+  flex: 1;
+  flex-basis: 80%;
+  // height: 100%;
+  padding: 1vw 1vw 0;
+  border-radius: 1rem;
+  background-color: ${colors.BACKGROUND};
 `;
 const StyledScrollContainer = styled.div`
-display: flex;
+  display: flex;
   height: 100%;
   flex-direction: column;
   overflow: scroll;
@@ -56,12 +57,12 @@ const Skeleton = () => {
   const [countPerson, setCountPerson] = useState(1);
   return (
     <BrowserRouter history={history}>
-      <div className={cx({[styles.blur_container]: countPerson !== 1})} />
+      <div className={cx({ [styles.blur_container]: countPerson !== 1 })} />
       <StyledMainContainer>
         <div style={{ display: 'none' }}>
           {/*<P5Wrapper sketch={(p) => checkFace(p, setCountPerson)} />*/}
         </div>
-        <SideMenu links={links()}  />
+        <SideMenu links={links()} />
         <StyledScrollContainer>
           <StyledContentContainer>
             <Switch>
@@ -74,12 +75,13 @@ const Skeleton = () => {
                 />
               ))}
             </Switch>
+            <Widget type={'success'} />
           </StyledContentContainer>
           <Footer />
         </StyledScrollContainer>
       </StyledMainContainer>
     </BrowserRouter>
   );
-}
+};
 
 export default Skeleton;
