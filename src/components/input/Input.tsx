@@ -72,7 +72,7 @@ const DefaultInput = ({
 }: InputProps) => {
   const [openKeyboard, setOpenKeyboard] = useState(false);
   return (
-    <InputContainer>
+    <InputContainer className={className}>
       {label && <InputLabel>{label}</InputLabel>}
       <InputIcCon>
         {voiceRecognition
@@ -128,7 +128,7 @@ const DefaultInput = ({
                 pattern={pattern}
             />
         }
-        {virtualKeyBoard && <div onClick={() => setOpenKeyboard(!openKeyboard)}><KeyboardIc /></div> }
+        {virtualKeyBoard && <IconContainer onClick={() => setOpenKeyboard(!openKeyboard)}><KeyboardIc /></IconContainer> }
         {virtualKeyBoard && openKeyboard && <KeyboardContainer>
           <Keyboard
             // @ts-ignore
@@ -189,6 +189,11 @@ export const KeyboardContainer = styled.div`
   left: 0;
   right: 0;
   margin: 0 auto;
+`;
+export const IconContainer = styled.div`
+  display: flex;
+  align-items: center,
+  justify-content: center;
 `;
 
 export const Input = styled(DefaultInput)`

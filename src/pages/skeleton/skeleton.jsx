@@ -20,10 +20,16 @@ const StyledContentContainer = styled.div`
 display: flex;
 flex: 1;
 flex-basis: 80%;
-height: 100%;
-padding: 1vw;
+// height: 100%;
+padding: 1vw 1vw 0;
 border-radius: 1rem;
 background-color: ${colors.BACKGROUND};
+`;
+const StyledScrollContainer = styled.div`
+display: flex;
+  height: 100%;
+  flex-direction: column;
+  overflow: scroll;
 `;
 
 const links = () => {
@@ -56,19 +62,21 @@ const Skeleton = () => {
           {/*<P5Wrapper sketch={(p) => checkFace(p, setCountPerson)} />*/}
         </div>
         <SideMenu links={links()}  />
-        <StyledContentContainer>
-          <Switch>
-            {Object.values(routes).map((route) => (
-              <Route
-                key={route.path}
-                exact
-                path={route.path}
-                component={route.component}
-              />
-            ))}
-          </Switch>
-        </StyledContentContainer>
-        <Footer />
+        <StyledScrollContainer>
+          <StyledContentContainer>
+            <Switch>
+              {Object.values(routes).map((route) => (
+                <Route
+                  key={route.path}
+                  exact
+                  path={route.path}
+                  component={route.component}
+                />
+              ))}
+            </Switch>
+          </StyledContentContainer>
+          <Footer />
+        </StyledScrollContainer>
       </StyledMainContainer>
     </BrowserRouter>
   );

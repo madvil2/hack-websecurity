@@ -85,13 +85,17 @@ const Transaction = () => {
               onSubmit={(e) => onSubmit(e)}
               className={styles.paymentsBlock}
             >
-              <h2 className={styles.title}>Данные карты получателя</h2>
-              <div className={styles.cardBlock}>
-                <Card
-                  value={inputsValue.adressee}
-                  changeValue={changeValue}
-                  type="adressee"
-                />
+              <div className={styles.cardsContainer}>
+                <div className={styles.flexColumn}>
+                  <p className={styles.title}>Данные карты отправителя</p>
+                  <div className={styles.cardBlock}>
+                    <Card
+                      value={inputsValue.adressee}
+                      changeValue={changeValue}
+                      type="adressee"
+                    />
+                  </div>
+                </div>
               </div>
               <Button onSubmit={(e) => onSubmit(e)} size="md" color="#fff" textColor="#0a2896">
                 Перевести

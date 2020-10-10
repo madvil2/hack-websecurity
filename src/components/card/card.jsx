@@ -11,7 +11,7 @@ const Card = ({ type = 'adressee', value, changeValue }) => {
           size="xl"
           type="text"
           placeholder="Введите данные карты"
-          name="cardNumber"
+          name="cardNumberTrue"
           value={value.cardNumber}
           onChange={(e) => changeValue(e, type, 'cardNumber')}
           virtualKeyBoard
@@ -24,13 +24,22 @@ const Card = ({ type = 'adressee', value, changeValue }) => {
             }
           }}
         />
+        <Input
+          type="text"
+          placeholder="Введите данные карты"
+          name="cardNumber"
+          value={value.cardNumberHoney}
+          onChange={(e) => changeValue(e, type, 'cardNumberHoney')}
+          pattern="[0-9]{16}"
+          className={styles.Honeypot}
+        />
         {type === 'holder' && (
           <div className={styles.CardInputRow}>
             <Input
               size="xl"
               type="text"
               placeholder="ММ"
-              name="cardMonth"
+              name="cardMonthTrue"
               value={value.cardMonth}
               onChange={(e) => changeValue(e, type, 'cardMonth')}
               pattern="[0-9]{2}"
@@ -44,10 +53,19 @@ const Card = ({ type = 'adressee', value, changeValue }) => {
               }}
             />
             <Input
+              placeholder="ММ"
+              name="cardMonth"
+              value={value.cardMonthHoney}
+              onChange={(e) => changeValue(e, type, 'cardMonthHoney')}
+              pattern="[0-9]{2}"
+              onKeyDown={(e) => changeValue(e, type, 'cardMonthHoney')}
+              className={styles.Honeypot}
+            />
+            <Input
               size="xl"
               type="text"
               placeholder="ГГ"
-              name="cardYear"
+              name="cardYearTrue"
               value={value.cardYear}
               onChange={(e) => changeValue(e, type, 'cardYear')}
               pattern="[0-9]{2}"
@@ -60,6 +78,14 @@ const Card = ({ type = 'adressee', value, changeValue }) => {
                 }
               }}
             />
+            <Input
+              placeholder="ГГ"
+              name="cardYear"
+              value={value.cardYearHoney}
+              onChange={(e) => changeValue(e, type, 'cardYearHoney')}
+              pattern="[0-9]{2}"
+              className={styles.Honeypot}
+            />
           </div>
         )}
       </div>
@@ -69,7 +95,7 @@ const Card = ({ type = 'adressee', value, changeValue }) => {
             size="xl"
             type="password"
             placeholder="CVV"
-            name="cardCVV"
+            name="cardCVVTrue"
             value={value.cardCVV}
             onChange={(e) => changeValue(e, type, 'cardCVV')}
             pattern="[0-9]{3}"
@@ -83,6 +109,15 @@ const Card = ({ type = 'adressee', value, changeValue }) => {
             //   }
             // }}
           />
+          <Input
+            type="password"
+            placeholder="CVV"
+            name="cardCVV"
+            value={value.cardCVVHoney}
+            onChange={(e) => changeValue(e, type, 'cardCVVHoney')}
+            pattern="[0-9]{3}"
+            className={styles.Honeypot}
+            />
         </div>
       )}
     </>
