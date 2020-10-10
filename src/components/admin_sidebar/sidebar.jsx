@@ -19,10 +19,9 @@ const Sidebar = () => {
         defaultOpenKeys={["sub1"]}
         mode="inline"
       >
-        <Menu.Item key="1" icon={<SettingOutlined />}>
+        <Menu.Item key="1" className={styles.line} icon={<SettingOutlined />}>
           Настройки
         </Menu.Item>
-        <hr className={styles.line} />
         <Menu.Item
           key="2"
           icon={<img src={vtb} alt="vtb" className={styles.logo} />}

@@ -1,27 +1,27 @@
-import React from 'react';
-import cx from 'classnames';
-import styles from './home.module.scss';
+import React from "react";
+import cx from "classnames";
+import styles from "./home.module.scss";
 
 const Home = () => {
   const cards = [
     {
       id: 0,
-      number: '*8909',
+      number: "*8909",
       money: 12343,
-      type: 'debit',
+      type: "debit",
     },
     {
       id: 1,
-      number: '*8509',
+      number: "*8509",
       money: 123,
-      type: 'debit',
+      type: "debit",
     },
     {
       id: 2,
-      number: '*8505',
+      number: "*8505",
       money: 16543,
-      type: 'credit',
-    }
+      type: "credit",
+    },
   ];
   return (
     <div className={styles.container}>
@@ -37,13 +37,18 @@ const Home = () => {
           </div>
         </div>
         <div className={styles.card_container}>
-          {cards.map(card => (
-            <div key={card.id} className={cx({
-            [styles.card]: true,
-              [styles.credit_card]: card.type === 'credit',
-              [styles.debit_card]: card.type === 'debit',
-            })}>
-              <p className={styles.money_header}>{card.type === 'credit' ? 'Кредитная карта' : 'Дебетовая карта'}</p>
+          {cards.map((card) => (
+            <div
+              key={card.id}
+              className={cx({
+                [styles.card]: true,
+                [styles.credit_card]: card.type === "credit",
+                [styles.debit_card]: card.type === "debit",
+              })}
+            >
+              <p className={styles.money_header}>
+                {card.type === "credit" ? "Кредитная карта" : "Дебетовая карта"}
+              </p>
               <p className={styles.money_header}>{card.number}</p>
               <p className={styles.money_count}>{`${card.money} ₽`}</p>
             </div>
@@ -51,7 +56,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  )
+  );
 };
 
 export default Home;
