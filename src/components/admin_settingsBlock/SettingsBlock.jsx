@@ -31,8 +31,8 @@ const SettingsBlock = () => {
     <div className={styles.block}>
       {rules.map((rule) => (
         <div className={styles.rule}>
-          <div className={styles.title}>
-            <h3>{rule.title}</h3>
+          <div>
+            <h3 className={styles.title}>{rule.title}</h3>
             <div className={styles.description}>
               <span>{rule.description}</span>
             </div>
@@ -42,7 +42,7 @@ const SettingsBlock = () => {
             id={rule.id}
             isCheckedDefault={rule.isActive}
             onChange={(value) => handleChange(rule.id, value)}
-            size="lg"
+            size="md"
           />
         </div>
       ))}
