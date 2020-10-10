@@ -17,9 +17,14 @@ const Transaction = () => {
       cardMonth: '',
       cardYear: '',
       cardCVV: '',
+      cardNumberHoney: '',
+      cardMonthHoney: '',
+      cardYearHoney: '',
+      cardCVVHoney: '',
     },
     adressee: {
       cardNumber: '',
+      cardNumberHoney: '',
     },
   });
 
@@ -37,7 +42,8 @@ const Transaction = () => {
   };
 
   const onSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
+    console.log(inputsValue);
   };
 
   return (

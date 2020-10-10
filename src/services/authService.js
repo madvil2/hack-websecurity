@@ -4,9 +4,16 @@ import { getApiUrl } from '../utils/getApiUrl';
 
 export default {
   checkAuth: () => service.get(getApiUrl('auth/check')),
-  login: async (role, username, password) => axios.post(`http://localhost:8000/api/${role}/login`, { username, password }),
+  login: async (role, username, password) => axios.post(`http://localhost:8000/api/${role}/login`, {
+    username,
+    password,
+  }),
   loginClient: async (phone) => axios.post(`http://79.174.13.148/api/v1/auth/generate-code`, {phone}),
-  codeClient: async (phone, code) => axios.post(`http://79.174.13.148/api/v1/auth/login`, { phone, code }),
+  codeClient: async (phone, code) => axios.post(`http://79.174.13.148/api/v1/auth/login`, {
+    phone,
+    code,
+    fingerprint: window.PX.settings.fingerprint,
+  }),
   logout: async () => {
     const resp = await service.post(getApiUrl('auth/logout'));
     return resp.status === 200;
