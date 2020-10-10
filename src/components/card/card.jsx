@@ -73,14 +73,15 @@ const Card = ({ type = 'adressee', value, changeValue }) => {
             value={value.cardCVV}
             onChange={(e) => changeValue(e, type, 'cardCVV')}
             pattern="[0-9]{3}"
-            virtualKeyBoard
-            onKeyDown={(e) => changeValue(e, type, 'cardCVV')}
-            inputMaskPattern={{
-              "default": {
-                mask: '111',
-                regex: /^[0-9]+$/
-              }
-            }}
+            voiceRecognition
+            // virtualKeyBoard
+            // onKeyDown={(e) => changeValue(e, type, 'cardCVV')}
+            // inputMaskPattern={{
+            //   "default": {
+            //     mask: '111',
+            //     regex: /^[0-9]+$/
+            //   }
+            // }}
           />
         </div>
       )}
