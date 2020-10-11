@@ -9,7 +9,7 @@ const CheckIp = () => {
     <div>
       <h1>Результат поиска будет в console.log</h1>
       <Search
-        placeholder="input ip"
+        placeholder="Enter IP"
         onSearch={(value) => getReputationScore(value)}
         style={{ width: 200 }}
       />

@@ -1,15 +1,15 @@
-import React from 'react';
-import styles from './settings.module.scss';
+import React from "react";
+import styles from "./settings.module.scss";
 import {
   TabList,
   SegmentControl,
   Tab,
   TabPanelsList,
   TabPanel,
-} from '../segmentControls';
-import SettingsBlock from '../admin_settingsBlock/SettingsBlock.jsx';
-import Monitoring from '../admin_monitoring/monitoring.jsx';
-import CheckIp from '../../ip/ip.jsx';
+} from "../segmentControls";
+import SettingsBlock from "../admin_settingsBlock/SettingsBlock.jsx";
+import Monitoring from "../admin_monitoring/monitoring.jsx";
+import CheckIp from "../../ip/ip.jsx";
 
 const Settings = () => {
   return (
@@ -19,7 +19,7 @@ const Settings = () => {
           <TabList>
             <Tab id="item1">Настройки компонента</Tab>
             <Tab id="item2">Мониторинг активностей</Tab>
-            <Tab id="item3">И еще</Tab>
+            <Tab id="item3">Проверка IP</Tab>
           </TabList>
           <hr className={styles.line} />
           <TabPanelsList>
