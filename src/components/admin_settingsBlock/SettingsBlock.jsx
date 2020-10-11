@@ -5,13 +5,13 @@ import { Switch } from "../switch";
 const SettingsBlock = () => {
   const rules = [
     {
-      title: "Настройка чего-то",
+      title: "Блокировка экрана при бездействии",
       description: "Описание настройки",
-      isActive: false,
+      isActive: true,
       id: 1,
     },
     {
-      title: "Еще какая-то настройка",
+      title: "Виртуальная клавиатура для ввода банковских данных",
       description: "Если оно вообще нужно",
       isActive: true,
       id: 2,
