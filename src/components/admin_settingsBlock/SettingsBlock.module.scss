@@ -32,3 +32,17 @@
 .SwitchStyleChecked {
   background-color: #1e4cd2;
 }
+
+.Input {
+  width: 100%;
+}
+
+.actionRow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.Button {
+  margin: 20px 0;
+}

@@ -1,12 +1,12 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import '../../fonts/fonts.css';
 import styled from 'styled-components';
 import colors from '../../colors';
 import { controlSize } from '../../sizes';
 import { controlVariant } from '../../variants';
-import { Keyboard as KeyboardIc } from '../icon'
-import Keyboard from "react-simple-keyboard";
-import "react-simple-keyboard/build/css/index.css";
+import { Keyboard as KeyboardIc } from '../icon';
+import Keyboard from 'react-simple-keyboard';
+import 'react-simple-keyboard/build/css/index.css';
 // @ts-ignore
 import inputMask from 'simple-keyboard-input-mask';
 // @ts-ignore
@@ -21,7 +21,7 @@ export interface InputProps {
   placeholder?: string;
   value?: string;
   onChange?: ((event: React.ChangeEvent<HTMLInputElement>) => void) | undefined;
-  onKeyDown?: ((event:string) => void) | undefined;
+  onKeyDown?: ((event: string) => void) | undefined;
   onBlur?: ((event: React.FormEvent<HTMLInputElement>) => void) | undefined;
   onFocus?: ((event: React.FormEvent<HTMLInputElement>) => void) | undefined;
   size?: 'sm' | 'md' | 'lg' | 'xl';
@@ -75,38 +75,15 @@ const DefaultInput = ({
     <InputContainer className={className}>
       {label && <InputLabel>{label}</InputLabel>}
       <InputIcCon>
-        {voiceRecognition
-            ? <>
-              <ReactVoiceInput
-                  // @ts-ignore
-                  onResult={(res) => onChange(res)}
-                  containerClassName="rvi_container"
-                  // onEnd={onEnd}
-              >
+        {voiceRecognition ? (
+          <>
+            <ReactVoiceInput
+              // @ts-ignore
+              onResult={(res) => onChange(res)}
+              containerClassName="rvi_container"
+              // onEnd={onEnd}
+            >
               <input
-                  ref={propRef}
-                  tabIndex={0}
-                  spellCheck
-                  name={name}
-                  className={className}
-                  type={type}
-                  placeholder={placeholder}
-                  value={value}
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                  // @ts-ignore
-                  onChange={(e) => onChange(e.target.value)}
-                  disabled={isDisabled}
-                  aria-label={ariaLabel}
-                  aria-describedby={ariaDescribedby}
-                  readOnly={isReadOnly}
-                  aria-invalid={isInvalid}
-                  required={isRequired}
-                  pattern={pattern}
-              />
-              </ReactVoiceInput>
-            </>
-            : <input
                 ref={propRef}
                 tabIndex={0}
                 spellCheck
@@ -126,18 +103,47 @@ const DefaultInput = ({
                 aria-invalid={isInvalid}
                 required={isRequired}
                 pattern={pattern}
-            />
-        }
-        {virtualKeyBoard && <IconContainer onClick={() => setOpenKeyboard(!openKeyboard)}><KeyboardIc /></IconContainer> }
-        {virtualKeyBoard && openKeyboard && <KeyboardContainer>
-          <Keyboard
+              />
+            </ReactVoiceInput>
+          </>
+        ) : (
+          <input
+            ref={propRef}
+            tabIndex={0}
+            spellCheck
+            name={name}
+            className={className}
+            type={type}
+            placeholder={placeholder}
+            value={value}
+            onFocus={onFocus}
+            onBlur={onBlur}
             // @ts-ignore
+            onChange={(e) => onChange(e.target.value)}
+            disabled={isDisabled}
+            aria-label={ariaLabel}
+            aria-describedby={ariaDescribedby}
+            readOnly={isReadOnly}
+            aria-invalid={isInvalid}
+            required={isRequired}
+            pattern={pattern}
+          />
+        )}
+        {virtualKeyBoard && (
+          <IconContainer onClick={() => setOpenKeyboard(!openKeyboard)}>
+            <KeyboardIc />
+          </IconContainer>
+        )}
+        {virtualKeyBoard && openKeyboard && (
+          <KeyboardContainer>
+            <Keyboard
+              // @ts-ignore
               onChange={(e) => onKeyDown(e)}
               inputMask={inputMaskPattern}
               modules={[inputMask]}
-        />
-        </KeyboardContainer>
-        }
+            />
+          </KeyboardContainer>
+        )}
       </InputIcCon>
     </InputContainer>
   );
@@ -192,7 +198,7 @@ export const KeyboardContainer = styled.div`
 `;
 export const IconContainer = styled.div`
   display: flex;
-  align-items: center,
+  align-items: center;
   justify-content: center;
 `;
 
