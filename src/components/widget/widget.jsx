@@ -6,9 +6,11 @@ import { WidgetControl } from './WidgetControl';
 
 const Widget = ({
   type = 'success',
-  checkFace, setCheckFace,
-  disableData, setDisableData,
-                }) => {
+  checkFace,
+  setCheckFace,
+  disableData,
+  setDisableData,
+}) => {
   const [active, setActive] = React.useState(false);
   const [controls, setControls] = React.useState([
     {
@@ -23,18 +25,6 @@ const Widget = ({
       checked: checkFace,
       setCheck: setCheckFace,
     },
-    {
-      title: 'Что-то еще',
-      checked: false,
-    },
-    {
-      title: 'Что-то еще',
-      checked: false,
-    },
-    {
-      title: 'Что-то еще',
-      checked: false,
-    },
   ]);
 
   const handlerChange = (id, val) => {
@@ -42,7 +32,6 @@ const Widget = ({
       controls.map((item, index) => {
         if (index === id) {
           item.checked = !item.checked;
-          console.log(val);
           if (item.setCheck) {
             item.setCheck(val);
           }
