@@ -1,5 +1,4 @@
 .block {
-
 }
 
 .rule {
@@ -8,6 +7,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   text-align: left;
   &:not(:last-child) {
     border-bottom: 1px solid #dbe1ee;
@@ -23,4 +23,12 @@
   font-size: 17px;
   color: #6b7683;
   padding-bottom: 5px;
+}
+
+.SwitchStyle {
+  background-color: #dbe1ee;
+}
+
+.SwitchStyleChecked {
+  background-color: #1e4cd2;
 }

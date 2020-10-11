@@ -1,15 +1,15 @@
-import React from "react";
-import styles from "./settings.module.scss";
+import React from 'react';
+import styles from './settings.module.scss';
 import {
   TabList,
   SegmentControl,
   Tab,
   TabPanelsList,
   TabPanel,
-} from "../segmentControls";
-import SettingsBlock from "../admin_settingsBlock/SettingsBlock.jsx";
-import Monitoring from "../admin_monitoring/monitoring.jsx";
-import CheckIp from "../../ip/ip.jsx";
+} from '../segmentControls';
+import SettingsBlock from '../admin_settingsBlock/SettingsBlock.jsx';
+import Monitoring from '../admin_monitoring/monitoring.jsx';
+import CheckIp from '../../ip/ip.jsx';
 
 const Settings = () => {
   return (
@@ -25,8 +25,6 @@ const Settings = () => {
           <TabPanelsList>
             <TabPanel id="item1">
               <h2 className={styles.title}>Настройки виджета</h2>
-              <SettingsBlock />
-              <h2 className={styles.title}>Блок настроек 2</h2>
               <SettingsBlock />
             </TabPanel>
             <TabPanel id="item2">

@@ -1,36 +1,45 @@
-import React from "react";
-import styles from "./SettingsBlock.module.scss";
-import { Switch } from "../switch";
+import React from 'react';
+import styles from './SettingsBlock.module.scss';
+import { Switch } from 'antd';
+import cx from 'classnames';
 
 const SettingsBlock = () => {
-  const rules = [
+  const [rules, setRules] = React.useState([
     {
-      title: "Блокировка экрана при бездействии",
-      description: "Описание настройки",
-      isActive: true,
+      title: 'Hash build',
+      description: 'Сверка hash build с тем, что на сервере',
+      isActive: false,
       id: 1,
     },
-    {
-      title: "Виртуальная клавиатура для ввода банковских данных",
-      description: "Если оно вообще нужно",
-      isActive: true,
-      id: 2,
-    },
-    {
-      title: "И еще одна",
-      description: "Но можно и убрать",
-      isActive: false,
-      id: 3,
-    },
-  ];
+  ]);
 
-  const handleChange = (id, value) => {
-    console.log(id, value.target.value); // change toggle
+  React.useEffect(() => {
+    if (rules[0].isActive) {
+      getHash();
+    }
+  }, [rules]);
+
+  const getHash = () => {
+    fetch('http://79.174.13.148/api/v1/settings')
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
+
+  const handlerChange = (id) => {
+    setRules(
+      rules.map((item) => {
+        if (item.id === id) {
+          item.isActive = !item.isActive;
+        }
+        return item;
+      })
+    ); // change toggle
+  };
+
   return (
     <div className={styles.block}>
-      {rules.map((rule) => (
-        <div className={styles.rule}>
+      {rules.map((rule, index) => (
+        <div key={index} className={styles.rule}>
           <div>
             <h3 className={styles.title}>{rule.title}</h3>
             <div className={styles.description}>
@@ -38,11 +47,12 @@ const SettingsBlock = () => {
             </div>
           </div>
           <Switch
-            color="#1e4cd2"
+            className={cx(styles.SwitchStyle, {
+              [styles.SwitchStyleChecked]: rule.isActive,
+            })}
             id={rule.id}
-            isCheckedDefault={rule.isActive}
-            onChange={(value) => handleChange(rule.id, value)}
-            size="md"
+            onChange={() => handlerChange(rule.id)}
+            checked={rule.isActive}
           />
         </div>
       ))}
