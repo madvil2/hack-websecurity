@@ -1,7 +1,6 @@
 import React from 'react';
 import styles from './SettingsBlock.module.scss';
 import { Switch } from 'antd';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '../button/index.ts';
 import cx from 'classnames';
