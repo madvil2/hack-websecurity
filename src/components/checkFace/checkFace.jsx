@@ -12,7 +12,7 @@ export default function sketch (p, setCountPerson) {
 
   function showCocoSSDResults(results) {
     cocoDrawings = results.filter(item => item.class === 'person');
-    setTimeout(() => setCountPerson(cocoDrawings.length), 500);
+    setTimeout(() => setCountPerson(cocoDrawings.length), 1000);
   }
 
   p.setup = async function () {

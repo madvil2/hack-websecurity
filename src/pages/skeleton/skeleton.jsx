@@ -58,7 +58,8 @@ const links = () => {
 
 const Skeleton = () => {
   const [countPerson, setCountPerson] = useState(1);
-  const [checkFaceW, setCheckFaceW] = useState(true);
+  const [checkFaceW, setCheckFaceW] = useState(false);
+  const [disableData, setDisableData] = useState(false);
   const [userInfo, setUserInfo] = useState({});
   const [isOpen, setIsOpen] = useState(false);
   const fetchData = async (fingerprint) => {
@@ -74,7 +75,6 @@ const Skeleton = () => {
   }, [window.PX.settings.fingerprint]);
 
   const [code, setCode] = useState('');
-  useEffect(() => console.log(countPerson), [countPerson]);
   const sendCode = async () => {
     const data = await toAPI.sendCode(code);
     if (data) {
@@ -117,11 +117,17 @@ const Skeleton = () => {
                   key={route.path}
                   exact
                   path={route.path}
-                  component={() => route.component(userInfo)}
+                  component={() => route.component({ userInfo, disableData })}
                 />
               ))}
             </Switch>
-            <Widget type={'success'} checkFace={checkFaceW} setCheckFace={setCheckFaceW} />
+            <Widget
+              type={'success'}
+              checkFace={checkFaceW}
+              setCheckFace={setCheckFaceW}
+              disableData={disableData}
+              setDisableData={setDisableData}
+            />
           </StyledContentContainer>
           <Footer />
         </StyledScrollContainer>

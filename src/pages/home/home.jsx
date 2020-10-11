@@ -2,7 +2,7 @@ import React from "react";
 import cx from "classnames";
 import styles from "./home.module.scss";
 
-const Home = (userInfo) => {
+const Home = ({ userInfo, disableData }) => {
   const summ = (arr) => {
     let sum = 0;
     arr.forEach(el => sum = sum + el.balance);
@@ -15,11 +15,18 @@ const Home = (userInfo) => {
           <div className={styles.money}>
             <p className={styles.money_header}>Собственные средства</p>
             <p
-              className={styles.money_count}>{`${userInfo.cards ? summ(userInfo.cards.filter(card => card.type !== 'credit')) : 0} ₽`}</p>
+              className={styles.money_count}>{`${
+                userInfo.cards && !disableData
+                  ? summ(userInfo.cards.filter(card => card.type !== 'credit'))
+                  : '*'
+              } ₽`}</p>
           </div>
           <div className={styles.money}>
             <p className={styles.money_header}>Всего</p>
-            <p className={styles.money_count}>{`${userInfo.cards ? summ(userInfo.cards) : 0} ₽`}</p>
+            <p className={styles.money_count}>{`${
+              userInfo.cards && !disableData
+                ? summ(userInfo.cards)
+                : '*'} ₽`}</p>
           </div>
         </div>
         <div className={styles.card_container}>
@@ -36,7 +43,7 @@ const Home = (userInfo) => {
                 {card.type === "credit" ? "Кредитная карта" : "Дебетовая карта"}
               </p>
               <p className={styles.money_header}>{`*${card.number.toString().slice(-4)}`}</p>
-              <p className={styles.money_count}>{`${card.balance} ₽`}</p>
+              <p className={styles.money_count}>{`${!disableData ? card.balance : '*'} ₽`}</p>
             </div>
           ))}
         </div>
