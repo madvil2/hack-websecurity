@@ -6,7 +6,7 @@ export async function getReputationScore(ipAddress) {
       `https://signals.api.auth0.com/v2.0/ip/${ipAddress}`,
       { headers: { "X-Auth-Token": "b8b06294-2357-4012-94cc-798c9720e346" } }
     );
-    return console.log(response.data.fullip);
+    return console.log(response.data);
   } catch (error) {
     console.error(error);
   }

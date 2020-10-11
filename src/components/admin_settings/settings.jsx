@@ -21,6 +21,7 @@ const Settings = () => {
             <Tab id="item2">Мониторинг активностей</Tab>
             <Tab id="item3">И еще</Tab>
           </TabList>
+          <hr className={styles.line} />
           <TabPanelsList>
             <TabPanel id="item1">
               <h2 className={styles.title}>Блок настроек 1</h2>

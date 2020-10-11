@@ -13,5 +13,13 @@
 .title {
   font-size: 23px;
   text-align: left;
-  margin-top: 32px;
+  &:not(:first-child) {
+    margin-top: 52px;
+  }
+}
+
+.line {
+  border-top: 1px solid #dbe1ee;
+  margin: 20px 0;
+  border-radius: 5px;
 }
