@@ -9,6 +9,7 @@ import {
 import { Button } from '../../../../components/button/index.ts';
 import Card from '../../../../components/card';
 import styles from './Transaction.module.scss';
+import { Input } from '../../../../components/input';
 
 const Transaction = () => {
   const [inputsValue, setInputsValue] = React.useState({
@@ -25,6 +26,9 @@ const Transaction = () => {
     adressee: {
       cardNumber: '',
       cardNumberHoney: '',
+    },
+    sum: {
+      sum: '',
     },
   });
 
@@ -77,6 +81,19 @@ const Transaction = () => {
                       value={inputsValue.adressee}
                       changeValue={changeValue}
                       type="adressee"
+                    />
+                  </div>
+                </div>
+                <div className={styles.flexColumn}>
+                  <p className={styles.title}>Сумма перевода</p>
+                  <div className={styles.cardBlock}>
+                    <Input
+                      type="nubber"
+                      placeholder="Введите сумму"
+                      name="sum"
+                      value={inputsValue.sum.sum}
+                      onChange={(e) => changeValue(e, 'sum', 'sum')}
+
                     />
                   </div>
                 </div>

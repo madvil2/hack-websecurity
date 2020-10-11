@@ -38,9 +38,9 @@ export const WidgetStatus = ({ type }) => {
         >
           <g
             fill="none"
-            fill-rule="evenodd"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            fillRule="evenodd"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <g>
               <g>
@@ -68,9 +68,9 @@ export const WidgetStatus = ({ type }) => {
         >
           <g
             fill="none"
-            fill-rule="evenodd"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            fillRule="evenodd"
+            strokeLinecap="round"
+            strokeLinejoin="round"
           >
             <g>
               <g>

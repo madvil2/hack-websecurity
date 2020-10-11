@@ -9,7 +9,6 @@ export const WidgetControl = ({
   title = false,
   description = false,
   onChange,
-  id,
   checked,
 }) => {
   return (
@@ -25,8 +24,9 @@ export const WidgetControl = ({
           className={cx(styles.SwitchStyle, {
             [styles.SwitchStyleChecked]: checked,
           })}
-          onChange={() => onChange(id)}
+          onChange={(e) => onChange(e)}
           checked={checked}
+          defaultChecked={checked}
         />
       </div>
     </WidgetControlContainer>

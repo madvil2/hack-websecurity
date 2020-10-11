@@ -57,12 +57,13 @@
   align-items: flex-start;
 }
 .credit_card {
-  background-image: url('../../assets/credit.jpg');
+  background-image: url('../../assets/1.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
 }
 .debit_card {
-  background-image: url('../../assets/debit.jpg');
+  background-image: url('../../assets/2.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
+  background-color: rgba(87, 89, 90, 0.2);
 }

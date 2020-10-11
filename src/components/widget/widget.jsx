@@ -4,13 +4,20 @@ import colors from '../../colors.ts';
 import { WidgetStatus } from './WidgetStatus';
 import { WidgetControl } from './WidgetControl';
 
-const Widget = ({ type = 'success', checkFace, setCheckFace }) => {
+const Widget = ({
+  type = 'success',
+  checkFace,
+  setCheckFace,
+  disableData,
+  setDisableData,
+}) => {
   const [active, setActive] = React.useState(false);
   const [controls, setControls] = React.useState([
     {
       title: 'Отключает отображение данных',
       description: 'Если вокруг небезопасно',
-      checked: false,
+      checked: disableData,
+      setCheck: setDisableData,
     },
     {
       title: 'Заблокировать приложение',
@@ -18,27 +25,15 @@ const Widget = ({ type = 'success', checkFace, setCheckFace }) => {
       checked: checkFace,
       setCheck: setCheckFace,
     },
-    {
-      title: 'Что-то еще',
-      checked: false,
-    },
-    {
-      title: 'Что-то еще',
-      checked: false,
-    },
-    {
-      title: 'Что-то еще',
-      checked: false,
-    },
   ]);
 
-  const handlerChange = (id) => {
+  const handlerChange = (id, val) => {
     setControls(
       controls.map((item, index) => {
         if (index === id) {
           item.checked = !item.checked;
           if (item.setCheck) {
-            item.setCheck(!checkFace);
+            item.setCheck(val);
           }
         }
         return item;
@@ -75,7 +70,7 @@ const Widget = ({ type = 'success', checkFace, setCheckFace }) => {
                   title={item.title}
                   description={item.description}
                   checked={item.checked}
-                  onChange={handlerChange}
+                  onChange={(e) => handlerChange(index, e)}
                 />
               ))}
             </ControlContainer>
