@@ -24,7 +24,7 @@ const Settings = () => {
           <hr className={styles.line} />
           <TabPanelsList>
             <TabPanel id="item1">
-              <h2 className={styles.title}>Блок настроек 1</h2>
+              <h2 className={styles.title}>Настройки виджета</h2>
               <SettingsBlock />
               <h2 className={styles.title}>Блок настроек 2</h2>
               <SettingsBlock />
