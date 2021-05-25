@@ -1,7 +1,7 @@
 import React from "react";
 import footer from "../../assets/footer.png"
 import styles from "./footer.module.scss"
-import vtbLogo from "../../assets/VTB_logo.svg"
+import vtbLogo from "../../assets/sberLogo.svg"
 import vtbMail from "../../assets/mail.png"
 import vtbPM from "../../assets/pm.png"
 import vtbApple from "../../assets/apple.png"
@@ -16,7 +16,7 @@ const Footer = () => {
             <div className={styles.support}>
                 <div className={styles.supp}>
                     <span className={styles.sup}>КРУГЛОСУТОЧНАЯ ПОДДЕРЖКА</span>
-                    <a href="tel:+78001002424" className={styles.tel}>8 (800) 100-24-24</a>
+                    <a href="tel:+78001002424" className={styles.tel}>8 (495) 500-55-50</a>
                 </div>
                 <div className={cx(styles.help, styles.pointer)}>
                     <img src={vtbMail} className={styles.icon} alt="vtbMail"/>
@@ -41,11 +41,11 @@ const Footer = () => {
             <div className={styles.page}>
                 <div>
                     <div className={cx(styles.help, styles.pointer, styles.phelp)}>
-                        <a href="tel:+78001002424" className={styles.ftel}>8 800 100-24-24 или 100</a>
+                        <a href="tel:+74955005550" className={styles.ftel}>8 495 500-55-50 или 900</a>
                         <span className={styles.fsup}>БЕСПЛАТНО ДЛЯ РЕГИОНОВ РОССИИ</span>
                     </div>
                     <div className={cx(styles.help, styles.pointer)}>
-                        <a href="tel:+74957772424" className={styles.ftel}>+7 495 777-24-24</a>
+                        <a href="tel:+74955005550" className={styles.ftel}>+7 495 500-55-50</a>
                         <span className={styles.fsup}>ДЛЯ МОСКВЫ И ЗАГРАНИЦЫ</span>
                     </div>
                     </div>

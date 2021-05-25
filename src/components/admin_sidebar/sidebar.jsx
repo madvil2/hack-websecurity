@@ -31,7 +31,7 @@ const Sidebar = () => {
           key="2"
           icon={<img src={vtb} alt="vtb" className={styles.logo} />}
         >
-          ВТБ
+          СберБанк
         </Menu.Item>
         <Menu.Item key="3" disabled={true} icon={<PlusOutlined />}>
           Добавить приложение

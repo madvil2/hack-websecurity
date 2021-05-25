@@ -98,7 +98,7 @@ const Transaction = () => {
                   </div>
                 </div>
               </div>
-              <Button onSubmit={(e) => onSubmit(e)} size="md" color="#fff" textColor="#0a2896">
+              <Button onSubmit={(e) => onSubmit(e)} size="md" color="#fff" textColor="#08a652">
                 Перевести
               </Button>
             </form>
@@ -120,7 +120,7 @@ const Transaction = () => {
                   </div>
                 </div>
               </div>
-              <Button onSubmit={(e) => onSubmit(e)} size="md" color="#fff" textColor="#0a2896">
+              <Button onSubmit={(e) => onSubmit(e)} size="md" color="#fff" textColor="#08a652">
                 Перевести
               </Button>
             </form>

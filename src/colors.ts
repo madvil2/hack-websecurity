@@ -8,13 +8,13 @@ export default {
   BLACK400: '#999999',
   BLACK700: '#4d4d4d',
 
-  INFO: '#0a2896',
+  INFO: '#08a652',
   INFO100: '#BBE0FE',
-  INFO200: '#9BD0FE',
-  INFO400: '#7AC0FF',
-  INFO700: '#5AB0FF',
+  INFO200: '#b5fe9b',
+  INFO400: '#87ff7a',
+  INFO700: '#7eff5a',
 
-  SUCCESS: '#0a2896',
+  SUCCESS: '#08a652',
   SUCCESS100: '#e7f9f0',
   SUCCESS200: '#cff2e1',
   SUCCESS400: '#9fe5c3',

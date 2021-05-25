@@ -137,7 +137,7 @@ const DefaultButton = styled.button<any>`
     if (!props.isDisabled && !props.loading) {
       if (props.type === buttonType.link)
         return `&:hover span {
-                color: #009fdf;
+                color: #44c77f;
           -webkit-filter:brightness(80%);
           filter:brightness(80%);
 

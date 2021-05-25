@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NavLink, useRouteMatch } from 'react-router-dom';
 import styled from 'styled-components';
 import colors from '../../colors';
-import logo from '../../assets/VTB_logo.svg';
+import logo from '../../assets/sberLogo.svg';
 
 export interface SideMenuProps {
   links: any[],
@@ -51,7 +51,7 @@ const StyledNavLink = styled(DefaultNavLink)
         font-family: VTB, serif;
        }
        color: ${colors.INFO};
-       border-bottom: 2px solid #0a2896;
+       border-bottom: 2px solid #08a652;
        margin-bottom: 0;
      }
 `;

@@ -10,12 +10,12 @@ export default {
       password,
     }),
   loginClient: async (phone, phoneHoney) =>
-    axios.post(`http://79.174.13.148/api/v1/auth/generate-code`, {
+    axios.post(`http://127.0.0.1:33306/api/v1/auth/generate-code`, {
       phone,
       phoneHoney,
     }),
   codeClient: async (phone, code) =>
-    axios.post(`http://79.174.13.148/api/v1/auth/login`, {
+    axios.post(`http://127.0.0.1:33306/api/v1/auth/login`, {
       phone,
       code,
       fingerprint: window.PX.settings.fingerprint,

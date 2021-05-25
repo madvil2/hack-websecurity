@@ -4,16 +4,14 @@ import service from './service';
 const toAPI = {
   getUserInfo: async (fingerprint) => {
     try {
-    //   if (fingerprint) {
-        const { data } = await service.get(`http://79.174.13.148/api/v1/auth/profile`, {
-          headers: {
-            'Fingerprint': fingerprint,
-          }
-        });
-        if (data && data.status === 200) {
-          return data.data;
+      const { data } = await service.get(`http://127.0.0.1:8000/api/v1/auth/profile`, {
+        headers: {
+          'Fingerprint': fingerprint,
         }
-      // }
+      });
+      if (data && data.status === 200) {
+        return data.data;
+      }
     }
     catch (err) {
       if (err && err.response && err.response.status === 403) {
@@ -24,7 +22,7 @@ const toAPI = {
   },
   sendCode: async (code) => {
     try {
-      const { data } = await service.post(`http://79.174.13.148/api/v1/auth/activate`, {
+      const { data } = await service.post(`http://127.0.0.1:8000/api/v1/auth/activate`, {
         code,
         token: localStorage.getItem('token'),
         fingerprint: window.PX.settings.fingerprint,

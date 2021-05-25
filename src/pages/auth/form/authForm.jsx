@@ -4,7 +4,6 @@ import { Form, Formik } from "formik";
 import { Button } from "../../../components/button";
 import styles from "./form.module.scss";
 import Footer from "../../../components/footer";
-// import { Input } from '../../../components/input';
 import { Input } from "antd";
 import gos from "../../../assets/gos.png";
 import { AddOutline } from "../../../components/icon";
@@ -15,7 +14,7 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
   const [first, setFirst] = useState(true);
   const formSchema = {
     name: "login",
-    title: "Вход в ВТБ-Онлайн",
+    title: "Вход в СберБанк Онлайн",
     fields: {
       login: {
         label: "Номер телефона",
@@ -54,11 +53,6 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
             loginTrue: formSchema.fields.login.rule,
             passwordTrue: formSchema.fields.password.rule,
           })}
-
-          // onSubmit={(values, { setSubmitting, setFieldError }) => {
-          //   onSubmitHandler(role, values, setFieldError);
-          //   setSubmitting(false);
-          // }}
         >
           {({
             handleSubmit,
@@ -77,7 +71,6 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
                 <div className={styles.form__groupField}>
                   <Input
                     placeholder={formSchema.fields.login.label}
-                    // type="number"
                     size="large"
                     {...getFieldProps("loginTrue")}
                   />
@@ -141,7 +134,7 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
                 </Button>
                 <br />
                 <Button
-                  color="#0a2896"
+                  color="#08a652"
                   onClick={() => {}}
                   onKeyPress={function noRefCheck() {}}
                   size="sm"
@@ -154,7 +147,7 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
                 <div className={styles.gos}>
                   <img src={gos} className={styles.icon} alt="gos" />
                   <Button
-                    color="#0a2896"
+                    color="#08a652"
                     onClick={() => {}}
                     onKeyPress={function noRefCheck() {}}
                     size="sm"
@@ -164,7 +157,7 @@ const AuthForm = ({ onSubmitHandler, onCodeHandler, role = "client" }) => {
                     className={styles.gos}
                     icon={<AddOutline color="#10BF6A" />}
                   >
-                    СТАТЬ КЛИЕНТОМ ВТБ ЧЕРЕЗ ГОСУСЛУГИ
+                    СТАТЬ КЛИЕНТОМ СБЕРБАНКА ЧЕРЕЗ ГОСУСЛУГИ
                   </Button>
                 </div>
               </Form>
