@@ -1,0 +1,103 @@
+.container {
+  width: 100%;
+}
+
+.Honeypot {
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 0;
+  width: 0;
+  z-index: -1;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 28px 32px;
+  margin: 2% 0 1% 20%;
+  background-color: #ffffff;
+  justify-content: center;
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
+  width: 600px;
+  min-height: 535px;
+  align-items: center;
+}
+
+.form__header {
+  font-family: OpenSans, sans-serif;
+  font-size: 32px;
+  font-weight: 300;
+  font-style: normal;
+  letter-spacing: -0.02em;
+  color: rgb(59, 66, 86);
+  text-align: center;
+  margin-bottom: 65px;
+  line-height: 1.4;
+}
+
+.form__groupField {
+  margin: 0;
+  //padding-bottom: 10px;
+  position: relative;
+  width: 100%;
+}
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.form__groupFieldLabel {
+  font-family: SeroPro-Medium;
+  font-size: 13px;
+  line-height: 34px;
+}
+
+.form__groupFieldError {
+  font-family: SBSansInterface-Regular;
+  font-size: 12px;
+  color: #e50332;
+}
+
+.form__submit {
+  font-family: SeroPro-Medium;
+  line-height: 40px;
+  height: auto !important;
+  margin-top: 20px;
+
+  &:hover, &:focus, &:active {
+    color: #fff;
+    border-color: #fff;
+    opacity: .8;
+  }
+}
+
+.formSelect {
+  max-width: 100%
+}
+
+.formGroupField_error {
+  position: absolute;
+  font-size: 12px
+}
+
+.selectArrow {
+  width: 1.042vw; // 20px;
+  height: 1.042vw; // 20px;
+}
+
+.logo {
+  margin: 10px;
+}
+
+.icon {
+  width: 42px;
+  height: 43px;
+  margin-right: 10px;
+}
+
+.gos {
+  display: flex;
+  align-items: center;
+}

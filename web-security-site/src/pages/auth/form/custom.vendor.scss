@@ -1,0 +1,29 @@
+.ant-input {
+  border: none;
+  border-bottom: 1px solid #dbe1ee;
+  outline: none;
+  &:hover {
+    outline: none;
+    border-color: transparent;
+    border-bottom: 1px solid #dbe1ee;
+  }
+  &:focus {
+    outline: none;
+    border-color: transparent;
+    border-bottom: 1px solid #1e4cd2;
+    box-shadow: none;
+  }
+}
+
+.ant-input-focused {
+  outline: none;
+  border-color: transparent;
+  box-shadow: none;
+}
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}

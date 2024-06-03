@@ -1,0 +1,98 @@
+version: '3'
+
+networks:
+  laravel:
+    driver: bridge
+
+services:
+  site:
+    build:
+      context: .
+      dockerfile: nginx.dockerfile
+    container_name: nginx
+    ports:
+      - '8085:80'
+      - '443:443'
+    volumes:
+      - ../../../web-security-api:/var/www/html:delegated
+      - ./ssl/web-security-api.test.crt:/etc/nginx/ssl/certificate.crt
+      - ./ssl/web-security-api.test.key:/etc/nginx/ssl/private.key
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/default.conf:/etc/nginx/conf.d/web-security-api.test.conf
+    depends_on:
+      - php
+      - mysql
+    networks:
+      - laravel
+
+  mysql:
+    image: mysql:5.7.29
+    container_name: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: unless-stopped
+    tty: true
+    ports:
+      - '33306:3306'
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      - laravel
+
+  php:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    container_name: php
+    user: laravel
+    volumes:
+      - ../../../web-security-api:/var/www/html:delegated
+    ports:
+      - '9000:9000'
+    networks:
+      - laravel
+
+  composer:
+    build:
+      context: .
+      dockerfile: composer.dockerfile
+    container_name: composer
+    volumes:
+      - ../../../web-security-api:/var/www/html
+      - ~/.composer/cache:/tmp
+    working_dir: /var/www/html
+    depends_on:
+      - php
+    user: laravel
+    networks:
+      - laravel
+    entrypoint: ['composer']
+
+  yarn:
+    image: node:13.7
+    container_name: yarn
+    volumes:
+      - ../../../web-security-api:/var/www/html
+    working_dir: /var/www/html
+    entrypoint: ['yarn', '--ignore-engines']
+
+  artisan:
+    build:
+      context: .
+      dockerfile: php.dockerfile
+    container_name: artisan
+    volumes:
+      - ../../../web-security-api:/var/www/html:delegated
+    depends_on:
+      - mysql
+    working_dir: /var/www/html
+    user: laravel
+    entrypoint: ['php', '/var/www/html/artisan']
+    networks:
+      - laravel

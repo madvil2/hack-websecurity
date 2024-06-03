@@ -1,7 +1,7 @@
 # Next-Gen Anti-Fraud System
 
 ## Introduction
-We are proud to announce that our latest hackathon project, the Next-Gen Anti-Fraud System, took **1st** place! This groundbreaking system is designed to protect banks and their clients from fraud, theft of personal data, and unauthorized access to funds. Our solution integrates seamlessly into any application, offering comprehensive security enhancements that shield against a wide array of cyber threats.
+We are proud to announce that our latest hackathon project, the Next-Gen Anti-Fraud System, took **1st place!** This groundbreaking system is designed to protect banks and their clients from fraud, theft of personal data, and unauthorized access to funds. Our solution integrates seamlessly into any application, offering comprehensive security enhancements that shield against a wide array of cyber threats.
 
 ## Features
 
